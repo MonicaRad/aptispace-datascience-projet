@@ -1,6 +1,6 @@
 # Mon Projet Data Science
-Étudiant(e) 1 : \[Insérer Prénom Nom\], Étudiant(e) 2 : \[Insérer Prénom
-Nom\], Étudiant(e) 3 : \[Insérer Prénom Nom\]
+Étudiant(e) 1 : Monica RADIFERA RASAMOELIJAONA, Étudiant(e) 2 :
+\[Insérer Prénom Nom\], Étudiant(e) 3 : \[Insérer Prénom Nom\]
 2026-05-18
 
 - [Introduction et Contexte Métier](#sec-intro)
@@ -49,7 +49,7 @@ Nom\], Étudiant(e) 3 : \[Insérer Prénom Nom\]
 
 # Introduction et Contexte Métier
 
-[![](https://github.com/aptitek/aptispace-datascience-projet/actions/workflows/ci.yml/badge.svg)](https://github.com/aptitek/aptispace-datascience-projet/actions/workflows/ci.yml)
+[![](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml/badge.svg)](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml)
 
 *À rédiger par les étudiants : Présentez ici le contexte global de votre
 projet, la problématique métier que vous cherchez à résoudre, les
