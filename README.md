@@ -1,7 +1,7 @@
 # Mon Projet Data Science
 
-Étudiant(e) 1 : \[Insérer Prénom Nom\], Étudiant(e) 2 : \[Insérer Prénom
-Nom\], Étudiant(e) 3 : \[Insérer Prénom Nom\]
+Étudiant(e) 1 : Monica RADIFERA RASAMOELIJAONA, Étudiant(e) 2 :
+\[Insérer Prénom Nom\], Étudiant(e) 3 : \[Insérer Prénom Nom\]
 2026-05-18
 
 - [Mon Projet Data Science](#mon-projet-data-science)
