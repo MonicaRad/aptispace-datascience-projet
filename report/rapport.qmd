@@ -2,7 +2,7 @@
 title: "Mon Projet Data Science"
 subtitle: "Projet Fil Rouge Data Science - Sujet Libre"
 author:
-  - "Étudiante 1 : Monica RADIFERA RASAMOELIJAONA"
+  - "Étudiante 1 : Monica  RADIFERA RASAMOELIJAONA"
   - "Étudiant 2 : Hocine AKLI"
 
 date: today
