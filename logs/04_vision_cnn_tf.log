@@ -28,32 +28,32 @@ Model: "sequential"
  Non-trainable params: 0 (0.00 B)
 Epoch 1/5
 
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m1s[0m 870ms/step - accuracy: 0.4688 - loss: 0.7081
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 99ms/step - accuracy: 0.7750 - loss: 0.6134 - val_accuracy: 1.0000 - val_loss: 0.3504
+[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m1s[0m 924ms/step - accuracy: 0.3125 - loss: 0.7022
+[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 99ms/step - accuracy: 0.4375 - loss: 0.6893 - val_accuracy: 1.0000 - val_loss: 0.5778
 Epoch 2/5
 
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 37ms/step - accuracy: 1.0000 - loss: 0.3429
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 1.0000 - loss: 0.2949 - val_accuracy: 1.0000 - val_loss: 0.1243
+[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 38ms/step - accuracy: 0.8750 - loss: 0.5735
+[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 38ms/step - accuracy: 0.9000 - loss: 0.5372 - val_accuracy: 1.0000 - val_loss: 0.3818
 Epoch 3/5
 
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 37ms/step - accuracy: 1.0000 - loss: 0.1285
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 1.0000 - loss: 0.0907 - val_accuracy: 1.0000 - val_loss: 0.0273
+[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 36ms/step - accuracy: 0.9062 - loss: 0.3911
+[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 0.9625 - loss: 0.3425 - val_accuracy: 1.0000 - val_loss: 0.1985
 Epoch 4/5
 
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 37ms/step - accuracy: 1.0000 - loss: 0.0288
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - accuracy: 1.0000 - loss: 0.0185 - val_accuracy: 1.0000 - val_loss: 0.0053
+[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 37ms/step - accuracy: 1.0000 - loss: 0.2106
+[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 1.0000 - loss: 0.1688 - val_accuracy: 1.0000 - val_loss: 0.0722
 Epoch 5/5
 
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 36ms/step - accuracy: 1.0000 - loss: 0.0102
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - accuracy: 1.0000 - loss: 0.0084 - val_accuracy: 1.0000 - val_loss: 0.0012
+[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 36ms/step - accuracy: 1.0000 - loss: 0.0756
+[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - accuracy: 1.0000 - loss: 0.0693 - val_accuracy: 1.0000 - val_loss: 0.0212
 
 === STDERR ===
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1779097709.966745    2601 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-I0000 00:00:1779097710.012368    2601 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1779114613.079560    2575 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1779114613.120794    2575 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1779097711.639022    2601 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-E0000 00:00:1779097713.071600    2601 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+I0000 00:00:1779114614.815203    2575 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1779114616.228710    2575 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/keras/src/layers/convolutional/base_conv.py:113: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
   super().__init__(activity_regularizer=activity_regularizer, **kwargs)
