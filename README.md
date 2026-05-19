@@ -19,9 +19,6 @@
   (Squelette
   Étudiant)](#bar_chart-jalon-1--analyse-exploratoire-des-données-eda--visualisation-squelette-étudiant)
 - [Visualisation Multidimensionnelle (Insights)](#sec-viz)
-  - [Profils et Distributions
-    Caractéristiques](#profils-et-distributions-caractéristiques)
-  - [Corrélations Globales](#corrélations-globales)
 - [Modélisation et Apprentissage](#sec-modelling)
   - [Schéma Global du Pipeline de
     Données](#schéma-global-du-pipeline-de-données)
@@ -154,28 +151,48 @@ types de données par colonne ? - Reste-t-il des valeurs nulles ? Quel
 est le taux de valeurs manquantes par variable ? - Y a-t-il des doublons
 ?
 
-### 3. Nettoyage et uniformisation des Dates
+### 3. Nettoyage des colonnes inutile
 
-**À faire par l’étudiant :** Appliquez la fonction `clean_dates` de
-votre module `src.data_clean` pour convertir la colonne `timestamp` en
-type Datetime uniforme.
+### 4. Renommage des colonnes
 
-### 4. Identification et Traitement des Outliers (Anomalies physiques)
+### 5. Nettoyage de la date
 
-**À faire par l’étudiant :** Analysez les valeurs de la colonne `value`
-et appliquez votre fonction `handle_outliers` pour filtrer les valeurs
-physiques aberrantes (inférieures à 0 ou supérieures à 100).
+La colonne `date` a été convertie au format datetime afin de permettre
+des analyses temporelles : évolution des cas, agrégation par mois, suivi
+de la progression de l’épidémie.
 
-### 5. Imputation des valeurs manquantes
+### 6. Suppression des agrégats non-pays
 
-**À faire par l’étudiant :** Appliquez la fonction
-`impute_missing_values` pour remplir les NaNs issus du chargement
-initial ou du nettoyage des anomalies.
+Les lignes correspondant aux continents ou aux agrégats globaux ont été
+supprimées afin de conserver uniquement les observations par pays.
 
-### 6. Sauvegarde des données propres
+### 7. Suppression des colonnes redondantes
 
-Enregistrez votre DataFrame nettoyé dans
-`data/processed/cleaned_data_sample.csv`.
+### 8. Gestion des valeurs manquantes
+
+Les valeurs manquantes des colonnes numériques principales ont été
+imputées par la médiane. Ce choix permet de limiter l’influence des
+valeurs extrêmes, fréquentes dans les données épidémiologiques où
+certains pays peuvent concentrer un nombre de cas beaucoup plus élevé
+que d’autres.
+
+### 9. tri, suppression des doublons et validation finale
+
+### 10. Sauvegarde des données propres
+
+Pour ce projet, le travail de data wrangling comprend :
+
+- chargement du CSV brut ;
+- audit initial du dataset : dimensions, types, valeurs manquantes et
+  doublons ;
+- conversion de la colonne date au format datetime ;
+- suppression des agrégats globaux et continentaux ;
+- renommage des colonnes principales ;
+- traitement des valeurs manquantes par imputation ;
+- suppression des colonnes redondantes ou peu utiles pour l’analyse ;
+- vérification et suppression des doublons ;
+- tri des données par pays et par date ;
+- sauvegarde du dataset nettoyé pour l’analyse exploratoire.
 
 ------------------------------------------------------------------------
 
@@ -275,35 +292,103 @@ le comportement de vos variables.
 
 # Visualisation Multidimensionnelle (Insights)
 
-Nous présentons ici les résultats visuels clés permettant de dégager des
-insights exploitables pour les décideurs, en s’appuyant sur notre module
-`src/utils_viz.py`.
-
-*À rédiger par les étudiants : Présentez et commentez en détail vos 3 à
-5 insights majeurs découverts lors de l’exploration descriptive
-visuelle. Intégrez et justifiez les figures clés générées.*
-
-## Profils et Distributions Caractéristiques
+Cette section présente les principaux résultats de l’exploration
+visuelle du dataset et met en évidence les tendances les plus
+importantes observées à travers les figures générées. \## Profils et
+Distributions Caractéristiques
 
 ``` python
-#| label: fig-distribution-density
-#| fig-cap: "Distribution ou profils caractéristiques de vos variables clés."
+#| label: fig-top5-countries
+#| fig-cap: "Évolution des cas totaux dans les 5 pays les plus touchés."
 #| echo: false
-# TODO: Utiliser vos fonctions personnalisées de votre module pour tracer la figure
+
+# Sélection des 5 pays les plus touchés
+top_5_countries = (
+    df_feat.groupby('country')['total_cases']
+    .max()
+    .sort_values(ascending=False)
+    .head(5)
+    .index
+)
+
+# Filtrage du dataset
+df_top5 = df_feat[df_feat['country'].isin(top_5_countries)]
+
+# Visualisation des tendances
+fig1 = uv.plot_generic_trends(
+    df_top5,
+    x_col='date',
+    y_col='total_cases',
+    group_col='country'
+)
+
+plt.show()
 ```
 
-\[Commenter la figure et décrire vos observations ici\]
+Cette figure montre l’évolution du nombre total de cas dans cinq pays au
+cours du temps. On observe d’abord une forte montée des cas à partir de
+l’été 2022, avec des rythmes différents selon les pays, puis une
+stabilisation progressive vers le début de l’année 2023.
 
-## Corrélations Globales
+Un premier constat est que les États-Unis présentent le niveau de cas le
+plus élevé sur toute la période, avec une croissance rapide puis un
+plateau autour de 30 000 cas. Le Brésil arrive ensuite avec une
+progression plus lente mais continue, tandis que l’Espagne atteint
+également un niveau important avant de se stabiliser. La France et la
+Colombie affichent des volumes plus faibles, avec une montée plus
+tardive et une stabilisation autour de 4 000 cas.
+
+Cette figure permet donc de voir que la propagation du Mpox n’a pas été
+uniforme selon les pays. Elle met en évidence des dynamiques très
+différentes, ce qui justifie une analyse par pays plutôt qu’une lecture
+globale unique. \## Répartition mondiale
 
 ``` python
 #| label: fig-correlation
-#| fig-cap: "Matrice de corrélation de Spearman ou de Pearson entre variables."
+#| fig-cap: "Répartiton mondiale."
 #| echo: false
-# TODO: Utiliser uv.plot_correlation_matrix() de votre module pour tracer la figure
+
+import plotly.express as px
+
+map_data = (
+    df_feat.groupby("country", as_index=False)["total_cases"]
+    .max()
+    .sort_values(by="total_cases", ascending=False)
+)
+
+fig = px.choropleth(
+    map_data,
+    locations="country",
+    locationmode="country names",
+    color="total_cases",
+    hover_name="country",
+    color_continuous_scale="Reds",
+    title="Répartition mondiale des cas cumulés de Mpox par pays"
+)
+
+fig.update_layout(
+    title_x=0.5,
+    geo=dict(showframe=False, showcoastlines=True)
+)
+
+fig.show()
 ```
 
-\[Commenter la figure et décrire vos observations ici\]
+Cette carte montre la répartition mondiale des cas cumulés de Mpox par
+pays. On voit clairement que les cas sont très concentrés dans quelques
+pays, surtout en Amérique du Nord et en Amérique du Sud, tandis que la
+majorité des autres pays affichent des niveaux plus faibles.
+
+Un premier insight est que les États-Unis apparaissent comme le pays le
+plus touché sur cette carte, avec une couleur beaucoup plus foncée que
+les autres. On observe aussi un niveau élevé au Brésil, alors que les
+pays d’Europe, d’Afrique et d’Asie semblent globalement moins touchés
+dans ce jeu de données.
+
+Cette visualisation est utile car elle permet de repérer rapidement les
+zones géographiques les plus concernées. Elle confirme que la
+propagation du Mpox n’est pas homogène à l’échelle mondiale et qu’une
+approche par pays reste nécessaire pour bien interpréter les données.
 
 ------------------------------------------------------------------------
 

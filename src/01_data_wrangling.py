@@ -17,43 +17,136 @@ from src import data_clean as dc
 print("Libraries importées avec succès ! Prêt à démarrer le Wrangling.")
 
 
-# Chargement du dataset brut avec votre fonction load_raw_data
-raw_data_path = '../data/raw/raw_data_sample.csv'
-df_raw = dc.load_raw_data(raw_data_path)
+raw_data_path = "../data/raw/owid-monkeypox-data.csv"
 
-# Affichage des premières lignes pour inspection visuelle
+df_raw = pd.read_csv(raw_data_path)
+
 df_raw.head()
 
 
-# Indication : utilisez df_raw.info(), df_raw.isnull().sum() et df_raw.duplicated().sum()
+print("Dimensions :", df_raw.shape)
 df_raw.info()
-print("NaNs:", df_raw.isnull().sum())
-print("Doublons:", df_raw.duplicated().sum())
 
 
-# Appliquez votre fonction dc.clean_dates() sur df_raw
-df_clean = dc.clean_dates(df_raw, 'timestamp')
+print("Valeurs manquantes par colonne :")
+df_raw.isnull().sum()
+
+
+print("Taux de valeurs manquantes (%) :")
+(df_raw.isnull().mean() * 100).sort_values(ascending=False)
+
+
+print("Nombre de doublons :", df_raw.duplicated().sum())
+
+
+df_raw.describe()
+
+
+df_clean = df_raw.copy()
+
+cols_to_drop = ['iso_code']
+
+df_clean = df_clean.drop(
+    columns=[col for col in cols_to_drop if col in df_clean.columns]
+)
+
 df_clean.head()
 
 
-# Affichez le résumé statistique de df_clean pour repérer les anomalies
-df_clean.describe()
+df_clean = df_clean.rename(columns={
+    'location': 'country',
+    'new_cases': 'daily_new_cases',
+    'new_deaths': 'daily_new_deaths',
+    'total_cases': 'total_cases',
+    'total_deaths': 'total_deaths'
+})
+
+df_clean.head()
 
 
-# Appliquez votre fonction dc.handle_outliers() avec l'intervalle plausible [0.0, 100.0]
-df_no_outliers = dc.handle_outliers(df_clean, ['value'], 0.0, 100.0)
-df_no_outliers.describe()
+df_clean['date'] = pd.to_datetime(df_clean['date'], errors='coerce')
+
+print(df_clean['date'].isnull().sum())
+df_clean[['date']].head()
 
 
-# Appliquez votre fonction dc.impute_missing_values() avec la méthode d'interpolation
-df_final = dc.impute_missing_values(df_no_outliers, ['value'], 'interpolate')
+countries_to_exclude = [
+    "Africa", "Europe", "North America", "South America",
+    "Asia", "World", "Oceania", "Puerto Rico"
+]
 
-# Validation finale : vérifiez qu'il ne reste aucune valeur manquante
-print("Valeurs manquantes finales :", df_final.isnull().sum())
+df_clean = df_clean[~df_clean['country'].isin(countries_to_exclude)]
+
+df_clean['country'].unique()[:20]
 
 
-# Sauvegarde
-processed_path = '../data/processed/cleaned_data_sample.csv'
-df_final.to_csv(processed_path, index=False)
-print(f"💾 Données propres sauvegardées dans : {processed_path}")
+redundant_cols = [
+    'new_cases_smoothed',
+    'new_deaths_smoothed',
+    'new_cases_per_million',
+    'total_cases_per_million',
+    'new_cases_smoothed_per_million',
+    'new_deaths_per_million',
+    'total_deaths_per_million',
+    'new_deaths_smoothed_per_million'
+]
+
+existing_redundant = [col for col in redundant_cols if col in df_clean.columns]
+
+df_clean = df_clean.drop(columns=existing_redundant)
+
+print("Colonnes supprimées :", existing_redundant)
+df_clean.head()
+
+
+# Colonnes à imputer
+cols_to_impute = [
+    "total_deaths",
+    "daily_new_cases",
+    "daily_new_deaths"
+]
+
+# Conversion de la date
+df_clean["date"] = pd.to_datetime(df_clean["date"], errors="coerce")
+
+# Création d'une colonne mois
+df_clean["year_month"] = df_clean["date"].dt.to_period("M")
+
+# Imputation par médiane mensuelle par pays, puis fallback
+for col in cols_to_impute:
+    if col in df_clean.columns:
+        # 1. Médiane par pays et par mois
+        df_clean[col] = df_clean.groupby(["country", "year_month"])[col].transform(
+            lambda x: x.fillna(x.median())
+        )
+
+df_clean = df_clean.drop(columns=["year_month"])
+# Vérification
+print("Valeurs manquantes après imputation :")
+print(df_clean[cols_to_impute].isnull().sum())
+
+
+# Suppression des doublons
+df_clean = df_clean.drop_duplicates()
+
+# Tri par pays puis par date
+df_clean = df_clean.sort_values(by=['country', 'date'])
+
+# Réinitialisation de l'index
+df_clean = df_clean.reset_index(drop=True)
+
+df_clean.head()
+
+
+print("Dimensions finales :", df_clean.shape)
+print("Doublons restants :", df_clean.duplicated().sum())
+print("Valeurs manquantes restantes :")
+df_clean.isnull().sum()
+
+
+processed_path = "../data/processed/owid-monkeypox-data_clean.csv"
+
+df_clean.to_csv(processed_path, index=False)
+
+print(f"Données nettoyées sauvegardées dans : {processed_path}")
 
