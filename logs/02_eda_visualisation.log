@@ -4,8 +4,8 @@
 === STDERR ===
 Traceback (most recent call last):
   File "/home/runner/work/aptispace-datascience-projet/aptispace-datascience-projet/src/02_eda_visualisation.py", line 25, in <module>
-    df = pd.read_csv('../data/processed/cleaned_data_sample.csv')
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    df = pd.read_csv('../data/processed/owid-monkeypox-data_clean.csv')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 873, in read_csv
     return _read(filepath_or_buffer, kwds)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -21,4 +21,4 @@ Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pandas/io/common.py", line 930, in get_handle
     handle = open(
              ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '../data/processed/cleaned_data_sample.csv'
+FileNotFoundError: [Errno 2] No such file or directory: '../data/processed/owid-monkeypox-data_clean.csv'

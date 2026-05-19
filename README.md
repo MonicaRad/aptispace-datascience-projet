@@ -260,7 +260,7 @@ générer des graphiques professionnels.
 
 **À faire par l’étudiant :** Appliquez la fonction `feature_engineering`
 de `src.data_clean` pour enrichir votre DataFrame en caractéristiques de
-temps classiques (heures, jours de la semaine).
+temps classiques .
 
 ### 3. Visualisations Professionnelles
 
@@ -270,14 +270,17 @@ temps classiques (heures, jours de la semaine).
 de votre module `src.utils_viz` pour tracer l’évolution de la valeur par
 rapport au temps.
 
-#### B. Matrice de corrélation multi-variables
+#### B. Répartition mondiale des cas cumulés de mpox par pays
 
-**À faire par l’étudiant :** Appliquez la fonction
-`plot_correlation_matrix` de votre module `src.utils_viz` pour calculer
-et afficher graphiquement la carte thermique des corrélations sur les
-colonnes `['value', 'hour', 'dayofweek']`.
+Cette carte permet de visualiser la répartition géographique des cas
+cumulés de mpox.  
+Elle est pertinente car le dataset contient une dimension spatiale avec
+une variable pays.  
+Contrairement à un simple tableau, la carte facilite l’identification
+rapide des zones les plus touchées et permet de comparer visuellement
+l’intensité de l’épidémie entre les pays.
 
-#### C. Nuage de points bivarié
+#### C. Carte animée de la propagation du mpox
 
 **À faire par l’étudiant :** Générez un nuage de points de la relation
 heure vs valeur en colorant les points selon la variable `dayofweek`, en
