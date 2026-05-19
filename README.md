@@ -1,6 +1,6 @@
 # Mon Projet Data Science
 Étudiante 1 : Monica RADIFERA RASAMOELIJAONA, Étudiant 2 : Hocine AKLI
-2026-05-18
+2026-05-19
 
 - [Introduction et Contexte Métier](#sec-intro)
   - [Contexte du Projet](#contexte-du-projet)
@@ -50,32 +50,49 @@
 
 [![](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml/badge.svg)](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml)
 
-*À rédiger par les étudiants : Présentez ici le contexte global de votre
-projet, la problématique métier que vous cherchez à résoudre, les
-questions scientifiques soulevées et les opportunités d’aide à la
-décision sur la base de vos données.*
+Ce projet analyse les données sur le Mpox (Monkeypox) pour mieux
+comprendre la propagation du virus. Face à l’émergence de cette maladie
+dans plusieurs pays, il est important de pouvoir suivre l’évolution des
+cas et identifier les zones à risque.
+
+La problématique est de savoir comment prédire et anticiper la
+propagation du Mpox à partir de données réelles. Cela pose des questions
+scientifiques sur les tendances temporelles, les différences entre pays
+et les facteurs influençant la diffusion du virus.
+
+L’objectif est d’offrir des insights utiles pour la prise de décision en
+santé publique : où surveiller davantage, quand anticiper un pic, et
+comment optimiser les moyens de prévention.
 
 ## Contexte du Projet
 
-*À rédiger par les étudiants — Pistes de réflexion :* - *Quels sont les
-objectifs globaux et le domaine d’étude de votre projet ?* - *En quoi ce
-sujet de recherche est-il pertinent et stratégique ?* - *Pourquoi
-l’analyse quantitative de ce jeu de données est-elle indispensable pour
-répondre à votre problématique ?*
+Ce projet étudie la propagation du Mpox dans le but de détecter des
+tendances et des zones à risque. Le domaine d’étude est la santé
+publique, avec un focus sur l’épidémiologie et l’analyse de données
+temporelles.
 
-\[Rédiger votre paragraphe de contexte ici\]
+Ce sujet est stratégique car le Mpox représente une menace sanitaire
+émergente, et sa surveillance permet de mieux préparer les systèmes de
+santé. Comprendre sa dynamique aide à prévenir de futures vagues de
+contamination.
+
+L’analyse quantitative est indispensable car elle transforme des données
+brutes en indicateurs actionnables. Elle permet de mesurer objectivement
+l’évolution des cas, de comparer les pays et de fonder les décisions sur
+des faits plutôt que sur des intuitions.
 
 ## Objectif Analytique
 
-*À rédiger par les étudiants — Pistes de réflexion :* - *Quelles sont
-les variables cibles principales et la tâche globale de modélisation
-(classification, régression, clustering, etc.) ?* - *Comment le couplage
-de données multi-sources et l’intégration de différents types de données
-(tabulaires, images, signaux, etc.) enrichissent-ils l’analyse ?* -
-*Quels sont les livrables analytiques attendus pour répondre à votre
-problématique et guider les prises de décisions ?*
+Les variables cibles principales sont la date, le pays, les new cases et
+new deaths (nouveaux cas et décès quotidiens), ainsi que les total cases
+et total deaths (cas et décès cumulés). L’objectif est d’analyser
+l’évolution de ces indicateurs dans le temps et d’identifier les pays
+les plus touchés par le Mpox.
 
-\[Rédiger votre paragraphe d’objectifs ici\]
+Ce dataset est tabulaire avec des données épidémiologiques quotidiennes
+par pays sur une période d’un an. L’analyse se concentre sur ces 15
+variables disponibles pour comprendre la dynamique de propagation du
+virus sans ajouter de données externes.
 
 ------------------------------------------------------------------------
 
