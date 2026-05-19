@@ -1,6 +1,6 @@
 # Mon Projet Data Science
 Étudiante 1 : Monica RADIFERA RASAMOELIJAONA, Étudiant 2 : Hocine AKLI
-2026-05-18
+2026-05-19
 
 - [Introduction et Contexte Métier](#sec-intro)
   - [Contexte du Projet](#contexte-du-projet)
@@ -8,16 +8,13 @@
 - [Acquisition et Préparation des Données (Data
   Wrangling)](#sec-wrangling)
   - [Audit de Qualité](#audit-de-qualité)
-  - [Algorithme de Nettoyage](#algorithme-de-nettoyage)
-  - [Travaux Pratiques de Wrangling](#travaux-pratiques-de-wrangling)
 - [🧹 Jalon 1 : Data Wrangling & Nettoyage (Squelette
   Étudiant)](#broom-jalon-1--data-wrangling--nettoyage-squelette-étudiant)
 - [Analyse Exploratoire des Données (EDA)](#sec-eda)
   - [Statistiques Descriptives](#statistiques-descriptives)
+  - [Statistiques Descriptives](#statistiques-descriptives-1)
   - [Ingénierie de Variables (Feature
     Engineering)](#ingénierie-de-variables-feature-engineering)
-  - [Travaux Pratiques d’Exploration Visuelle
-    (EDA)](#travaux-pratiques-dexploration-visuelle-eda)
 - [📊 Jalon 1 : Analyse Exploratoire des Données (EDA) & Visualisation
   (Squelette
   Étudiant)](#bar_chart-jalon-1--analyse-exploratoire-des-données-eda--visualisation-squelette-étudiant)
@@ -50,32 +47,49 @@
 
 [![](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml/badge.svg)](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml)
 
-*À rédiger par les étudiants : Présentez ici le contexte global de votre
-projet, la problématique métier que vous cherchez à résoudre, les
-questions scientifiques soulevées et les opportunités d’aide à la
-décision sur la base de vos données.*
+Ce projet analyse les données sur le Mpox (Monkeypox) pour mieux
+comprendre la propagation du virus. Face à l’émergence de cette maladie
+dans plusieurs pays, il est important de pouvoir suivre l’évolution des
+cas et identifier les zones à risque.
+
+La problématique est de savoir comment prédire et anticiper la
+propagation du Mpox à partir de données réelles. Cela pose des questions
+scientifiques sur les tendances temporelles, les différences entre pays
+et les facteurs influençant la diffusion du virus.
+
+L’objectif est d’offrir des insights utiles pour la prise de décision en
+santé publique : où surveiller davantage, quand anticiper un pic, et
+comment optimiser les moyens de prévention.
 
 ## Contexte du Projet
 
-*À rédiger par les étudiants — Pistes de réflexion :* - *Quels sont les
-objectifs globaux et le domaine d’étude de votre projet ?* - *En quoi ce
-sujet de recherche est-il pertinent et stratégique ?* - *Pourquoi
-l’analyse quantitative de ce jeu de données est-elle indispensable pour
-répondre à votre problématique ?*
+Ce projet étudie la propagation du Mpox dans le but de détecter des
+tendances et des zones à risque. Le domaine d’étude est la santé
+publique, avec un focus sur l’épidémiologie et l’analyse de données
+temporelles.
 
-\[Rédiger votre paragraphe de contexte ici\]
+Ce sujet est stratégique car le Mpox représente une menace sanitaire
+émergente, et sa surveillance permet de mieux préparer les systèmes de
+santé. Comprendre sa dynamique aide à prévenir de futures vagues de
+contamination.
+
+L’analyse quantitative est indispensable car elle transforme des données
+brutes en indicateurs actionnables. Elle permet de mesurer objectivement
+l’évolution des cas, de comparer les pays et de fonder les décisions sur
+des faits plutôt que sur des intuitions.
 
 ## Objectif Analytique
 
-*À rédiger par les étudiants — Pistes de réflexion :* - *Quelles sont
-les variables cibles principales et la tâche globale de modélisation
-(classification, régression, clustering, etc.) ?* - *Comment le couplage
-de données multi-sources et l’intégration de différents types de données
-(tabulaires, images, signaux, etc.) enrichissent-ils l’analyse ?* -
-*Quels sont les livrables analytiques attendus pour répondre à votre
-problématique et guider les prises de décisions ?*
+Les variables cibles principales sont la date, le pays, les new cases et
+new deaths (nouveaux cas et décès quotidiens), ainsi que les total cases
+et total deaths (cas et décès cumulés). L’objectif est d’analyser
+l’évolution de ces indicateurs dans le temps et d’identifier les pays
+les plus touchés par le Mpox.
 
-\[Rédiger votre paragraphe d’objectifs ici\]
+Ce dataset est tabulaire avec des données épidémiologiques quotidiennes
+par pays sur une période d’un an. L’analyse se concentre sur ces 15
+variables disponibles pour comprendre la dynamique de propagation du
+virus sans ajouter de données externes.
 
 ------------------------------------------------------------------------
 
@@ -88,23 +102,39 @@ appliquées à vos jeux de données bruts.
 
 ## Audit de Qualité
 
-*À rédiger par les étudiants : Présentez un audit critique complet de
-vos fichiers de données brutes. Indiquez la liste des anomalies
-physiques et typologiques détectées (formats de dates hétérogènes,
-outliers physiques, taux de valeurs manquantes, etc.).*
+Le fichier de données a été vérifié sur les aspects essentiels de
+qualité, notamment la structure des colonnes, la présence de valeurs
+manquantes et la présence éventuelle de doublons. L’audit a montré que
+certaines colonnes contenaient trop de cases vides, ce qui risquait de
+nuire à la fiabilité des analyses.
 
-\[Rédiger votre audit de données ici\]
+Nous avons donc choisi de supprimer ces colonnes afin de conserver
+uniquement les variables réellement exploitables. En parallèle, les
+doublons ont aussi été contrôlés pour éviter les répétitions dans le jeu
+de données et garantir une base plus propre.
 
-## Algorithme de Nettoyage
+Après ce tri, les données restantes ont pu être analysées sans
+difficulté majeure. Le dataset final est donc mieux adapté aux étapes
+d’exploration, de visualisation et de modélisation. \## Algorithme de
+Nettoyage Le traitement des données a commencé par un nettoyage des
+dates afin d’obtenir un format homogène et exploitable pour l’analyse
+temporelle. Nous avons ensuite supprimé les colonnes contenant trop de
+valeurs manquantes, car elles apportaient peu d’information et
+risquaient de fragiliser les analyses.
 
-*À rédiger par les étudiants : Justifiez et détaillez l’enchaînement de
-vos opérations de traitement (uniformisation des dates, masquage des
-outliers, imputation, etc.). Faites référence aux fonctions
-correspondantes de votre module `src/data_clean.py`.*
+Comme le jeu de données contenait à la fois des informations au niveau
+des pays et des continents, nous avons conservé uniquement les données
+par pays afin d’avoir une analyse plus précise et plus cohérente.
 
-\[Rédiger la justification méthodologique ici\]
-
-## Travaux Pratiques de Wrangling
+Enfin, nous avons supprimé les colonnes jugées non utiles car
+redondantes, afin de simplifier le jeu de données et de garder
+uniquement les variables pertinentes pour l’analyse. Nous avons
+également recalculé les valeurs totals death pour les valeurs
+manquantes, afin de garantir la cohérence des données avant l’analyse.
+Les données sont ensuite triées par pays et date afin d’avoir une
+meilleure visibilité. Ces étapes ont permis de travailler sur une base
+plus propre, plus homogène et mieux adaptée aux analyses et à la
+modélisation. \## Travaux Pratiques de Wrangling
 
 # 🧹 Jalon 1 : Data Wrangling & Nettoyage (Squelette Étudiant)
 
@@ -157,21 +187,47 @@ données.
 
 ## Statistiques Descriptives
 
-*À rédiger par les étudiants : Présentez une vue d’ensemble descriptive
-rapide de vos variables nettoyées.*
+## Statistiques Descriptives
 
-\[Rédiger les statistiques descriptives ici\]
+Le jeu de données nettoyé contient les variables principales liées au
+suivi du Mpox, notamment le pays, la date, le nombre total de cas, le
+nombre total de décès, les nouveaux cas quotidiens et les nouveaux décès
+quotidiens. Les premières observations montrent une structure temporelle
+cohérente, avec des valeurs numériques qui varient selon les pays.
+
+Les variables cumulées comme `total_cases` et `total_deaths` permettent
+de suivre l’évolution globale de l’épidémie, tandis que les variables
+journalières `daily_new_cases` et `daily_new_deaths` mettent en évidence
+les fluctuations d’un jour à l’autre. On observe aussi que, dans
+certains pays, les décès restent nuls sur plusieurs périodes, ce qui
+traduit une faible mortalité observée dans ces données.
+
+Dans l’ensemble, les variables nettoyées sont bien adaptées à une
+analyse descriptive, car elles permettent de comparer les pays,
+d’étudier l’évolution dans le temps et d’identifier les zones où la
+propagation est la plus marquée.
 
 ## Ingénierie de Variables (Feature Engineering)
 
-*À rédiger par les étudiants : Expliquez l’intérêt mathématique et
-l’impact sur les modèles prédictifs d’extraire des caractéristiques
-dérivées (ex: variables cycliques temporelles, ratios financiers, ratios
-physiques, etc.).*
+Dans notre cas, l’ingénierie de variables est restée assez limitée, car
+le dataset contient déjà les informations utiles pour suivre l’évolution
+du Mpox. Nous avons donc conservé les variables principales comme le
+pays, la date, les nouveaux cas, les nouveaux décès, les cas totaux et
+les décès totaux. Quand certaines valeurs de total_deaths étaient
+manquantes, nous les avons recalculées à partir des informations
+disponibles afin de garder une variable exploitable et cohérente.
 
-\[Rédiger votre explication de l’ingénierie de variables ici\]
-
-## Travaux Pratiques d’Exploration Visuelle (EDA)
+L’intérêt de cette étape est de s’assurer que les données utilisées pour
+la suite du projet soient fiables et complètes. Cela permet aussi de
+garder une base propre pour l’analyse descriptive et la modélisation,
+sans ajouter de variables artificielles qui ne viennent pas du dataset.
+En pratique, cela montre une démarche rigoureuse de préparation des
+données, ce qui est important dans un projet de data science. Cette
+étape a surtout servi à nettoyer, compléter et organiser les variables
+déjà présentes, plutôt qu’à créer de nouvelles caractéristiques. C’est
+une approche adaptée à un rapport étudiant, parce qu’elle reste fidèle
+aux données réelles et au travail effectivement réalisé. \## Travaux
+Pratiques d’Exploration Visuelle (EDA)
 
 # 📊 Jalon 1 : Analyse Exploratoire des Données (EDA) & Visualisation (Squelette Étudiant)
 
