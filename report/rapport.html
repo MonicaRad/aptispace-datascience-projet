@@ -148,10 +148,14 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#importation-des-packages-et-chargement-des-données" id="toc-importation-des-packages-et-chargement-des-données" class="nav-link" data-scroll-target="#importation-des-packages-et-chargement-des-données"><span class="header-section-number">3.0.1</span> 1. Importation des packages et chargement des données</a></li>
   <li><a href="#audit-initial-des-données" id="toc-audit-initial-des-données" class="nav-link" data-scroll-target="#audit-initial-des-données"><span class="header-section-number">3.0.2</span> 2. Audit initial des données</a></li>
-  <li><a href="#nettoyage-et-uniformisation-des-dates" id="toc-nettoyage-et-uniformisation-des-dates" class="nav-link" data-scroll-target="#nettoyage-et-uniformisation-des-dates"><span class="header-section-number">3.0.3</span> 3. Nettoyage et uniformisation des Dates</a></li>
-  <li><a href="#identification-et-traitement-des-outliers-anomalies-physiques" id="toc-identification-et-traitement-des-outliers-anomalies-physiques" class="nav-link" data-scroll-target="#identification-et-traitement-des-outliers-anomalies-physiques"><span class="header-section-number">3.0.4</span> 4. Identification et Traitement des Outliers (Anomalies physiques)</a></li>
-  <li><a href="#imputation-des-valeurs-manquantes" id="toc-imputation-des-valeurs-manquantes" class="nav-link" data-scroll-target="#imputation-des-valeurs-manquantes"><span class="header-section-number">3.0.5</span> 5. Imputation des valeurs manquantes</a></li>
-  <li><a href="#sauvegarde-des-données-propres" id="toc-sauvegarde-des-données-propres" class="nav-link" data-scroll-target="#sauvegarde-des-données-propres"><span class="header-section-number">3.0.6</span> 6. Sauvegarde des données propres</a></li>
+  <li><a href="#nettoyage-des-colonnes-inutile" id="toc-nettoyage-des-colonnes-inutile" class="nav-link" data-scroll-target="#nettoyage-des-colonnes-inutile"><span class="header-section-number">3.0.3</span> 3. Nettoyage des colonnes inutile</a></li>
+  <li><a href="#renommage-des-colonnes" id="toc-renommage-des-colonnes" class="nav-link" data-scroll-target="#renommage-des-colonnes"><span class="header-section-number">3.0.4</span> 4. Renommage des colonnes</a></li>
+  <li><a href="#nettoyage-de-la-date" id="toc-nettoyage-de-la-date" class="nav-link" data-scroll-target="#nettoyage-de-la-date"><span class="header-section-number">3.0.5</span> 5. Nettoyage de la date</a></li>
+  <li><a href="#suppression-des-agrégats-non-pays" id="toc-suppression-des-agrégats-non-pays" class="nav-link" data-scroll-target="#suppression-des-agrégats-non-pays"><span class="header-section-number">3.0.6</span> 6. Suppression des agrégats non-pays</a></li>
+  <li><a href="#suppression-des-colonnes-redondantes" id="toc-suppression-des-colonnes-redondantes" class="nav-link" data-scroll-target="#suppression-des-colonnes-redondantes"><span class="header-section-number">3.0.7</span> 7. Suppression des colonnes redondantes</a></li>
+  <li><a href="#gestion-des-valeurs-manquantes" id="toc-gestion-des-valeurs-manquantes" class="nav-link" data-scroll-target="#gestion-des-valeurs-manquantes"><span class="header-section-number">3.0.8</span> 8. Gestion des valeurs manquantes</a></li>
+  <li><a href="#tri-suppression-des-doublons-et-validation-finale" id="toc-tri-suppression-des-doublons-et-validation-finale" class="nav-link" data-scroll-target="#tri-suppression-des-doublons-et-validation-finale"><span class="header-section-number">3.0.9</span> 9. tri, suppression des doublons et validation finale</a></li>
+  <li><a href="#sauvegarde-des-données-propres" id="toc-sauvegarde-des-données-propres" class="nav-link" data-scroll-target="#sauvegarde-des-données-propres"><span class="header-section-number">3.0.10</span> 10. Sauvegarde des données propres</a></li>
   </ul></li>
   <li><a href="#sec-eda" id="toc-sec-eda" class="nav-link" data-scroll-target="#sec-eda"><span class="header-section-number">4</span> Analyse Exploratoire des Données (EDA)</a>
   <ul class="collapse">
@@ -294,21 +298,45 @@ window.Quarto = {
 <h3 data-number="3.0.2" class="anchored" data-anchor-id="audit-initial-des-données"><span class="header-section-number">3.0.2</span> 2. Audit initial des données</h3>
 <p><strong>À faire par l’étudiant :</strong> Explorez le dataset brut pour évaluer sa structure : - Quelles sont les dimensions du dataset ? - Quels sont les types de données par colonne ? - Reste-t-il des valeurs nulles ? Quel est le taux de valeurs manquantes par variable ? - Y a-t-il des doublons ?</p>
 </section>
-<section id="nettoyage-et-uniformisation-des-dates" class="level3" data-number="3.0.3">
-<h3 data-number="3.0.3" class="anchored" data-anchor-id="nettoyage-et-uniformisation-des-dates"><span class="header-section-number">3.0.3</span> 3. Nettoyage et uniformisation des Dates</h3>
-<p><strong>À faire par l’étudiant :</strong> Appliquez la fonction <code>clean_dates</code> de votre module <code>src.data_clean</code> pour convertir la colonne <code>timestamp</code> en type Datetime uniforme.</p>
+<section id="nettoyage-des-colonnes-inutile" class="level3" data-number="3.0.3">
+<h3 data-number="3.0.3" class="anchored" data-anchor-id="nettoyage-des-colonnes-inutile"><span class="header-section-number">3.0.3</span> 3. Nettoyage des colonnes inutile</h3>
 </section>
-<section id="identification-et-traitement-des-outliers-anomalies-physiques" class="level3" data-number="3.0.4">
-<h3 data-number="3.0.4" class="anchored" data-anchor-id="identification-et-traitement-des-outliers-anomalies-physiques"><span class="header-section-number">3.0.4</span> 4. Identification et Traitement des Outliers (Anomalies physiques)</h3>
-<p><strong>À faire par l’étudiant :</strong> Analysez les valeurs de la colonne <code>value</code> et appliquez votre fonction <code>handle_outliers</code> pour filtrer les valeurs physiques aberrantes (inférieures à 0 ou supérieures à 100).</p>
+<section id="renommage-des-colonnes" class="level3" data-number="3.0.4">
+<h3 data-number="3.0.4" class="anchored" data-anchor-id="renommage-des-colonnes"><span class="header-section-number">3.0.4</span> 4. Renommage des colonnes</h3>
 </section>
-<section id="imputation-des-valeurs-manquantes" class="level3" data-number="3.0.5">
-<h3 data-number="3.0.5" class="anchored" data-anchor-id="imputation-des-valeurs-manquantes"><span class="header-section-number">3.0.5</span> 5. Imputation des valeurs manquantes</h3>
-<p><strong>À faire par l’étudiant :</strong> Appliquez la fonction <code>impute_missing_values</code> pour remplir les NaNs issus du chargement initial ou du nettoyage des anomalies.</p>
+<section id="nettoyage-de-la-date" class="level3" data-number="3.0.5">
+<h3 data-number="3.0.5" class="anchored" data-anchor-id="nettoyage-de-la-date"><span class="header-section-number">3.0.5</span> 5. Nettoyage de la date</h3>
+<p>La colonne <code>date</code> a été convertie au format datetime afin de permettre des analyses temporelles : évolution des cas, agrégation par mois, suivi de la progression de l’épidémie.</p>
 </section>
-<section id="sauvegarde-des-données-propres" class="level3" data-number="3.0.6">
-<h3 data-number="3.0.6" class="anchored" data-anchor-id="sauvegarde-des-données-propres"><span class="header-section-number">3.0.6</span> 6. Sauvegarde des données propres</h3>
-<p>Enregistrez votre DataFrame nettoyé dans <code>data/processed/cleaned_data_sample.csv</code>.</p>
+<section id="suppression-des-agrégats-non-pays" class="level3" data-number="3.0.6">
+<h3 data-number="3.0.6" class="anchored" data-anchor-id="suppression-des-agrégats-non-pays"><span class="header-section-number">3.0.6</span> 6. Suppression des agrégats non-pays</h3>
+<p>Les lignes correspondant aux continents ou aux agrégats globaux ont été supprimées afin de conserver uniquement les observations par pays.</p>
+</section>
+<section id="suppression-des-colonnes-redondantes" class="level3" data-number="3.0.7">
+<h3 data-number="3.0.7" class="anchored" data-anchor-id="suppression-des-colonnes-redondantes"><span class="header-section-number">3.0.7</span> 7. Suppression des colonnes redondantes</h3>
+</section>
+<section id="gestion-des-valeurs-manquantes" class="level3" data-number="3.0.8">
+<h3 data-number="3.0.8" class="anchored" data-anchor-id="gestion-des-valeurs-manquantes"><span class="header-section-number">3.0.8</span> 8. Gestion des valeurs manquantes</h3>
+<p>Les valeurs manquantes des colonnes numériques principales ont été imputées par la médiane. Ce choix permet de limiter l’influence des valeurs extrêmes, fréquentes dans les données épidémiologiques où certains pays peuvent concentrer un nombre de cas beaucoup plus élevé que d’autres.</p>
+</section>
+<section id="tri-suppression-des-doublons-et-validation-finale" class="level3" data-number="3.0.9">
+<h3 data-number="3.0.9" class="anchored" data-anchor-id="tri-suppression-des-doublons-et-validation-finale"><span class="header-section-number">3.0.9</span> 9. tri, suppression des doublons et validation finale</h3>
+</section>
+<section id="sauvegarde-des-données-propres" class="level3" data-number="3.0.10">
+<h3 data-number="3.0.10" class="anchored" data-anchor-id="sauvegarde-des-données-propres"><span class="header-section-number">3.0.10</span> 10. Sauvegarde des données propres</h3>
+<p>Pour ce projet, le travail de data wrangling comprend :</p>
+<ul>
+<li>chargement du CSV brut ;</li>
+<li>audit initial du dataset : dimensions, types, valeurs manquantes et doublons ;</li>
+<li>conversion de la colonne date au format datetime ;</li>
+<li>suppression des agrégats globaux et continentaux ;</li>
+<li>renommage des colonnes principales ;</li>
+<li>traitement des valeurs manquantes par imputation ;</li>
+<li>suppression des colonnes redondantes ou peu utiles pour l’analyse ;</li>
+<li>vérification et suppression des doublons ;</li>
+<li>tri des données par pays et par date ;</li>
+<li>sauvegarde du dataset nettoyé pour l’analyse exploratoire.</li>
+</ul>
 <hr>
 </section>
 </section>

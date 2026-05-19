@@ -154,28 +154,48 @@ types de données par colonne ? - Reste-t-il des valeurs nulles ? Quel
 est le taux de valeurs manquantes par variable ? - Y a-t-il des doublons
 ?
 
-### 3. Nettoyage et uniformisation des Dates
+### 3. Nettoyage des colonnes inutile
 
-**À faire par l’étudiant :** Appliquez la fonction `clean_dates` de
-votre module `src.data_clean` pour convertir la colonne `timestamp` en
-type Datetime uniforme.
+### 4. Renommage des colonnes
 
-### 4. Identification et Traitement des Outliers (Anomalies physiques)
+### 5. Nettoyage de la date
 
-**À faire par l’étudiant :** Analysez les valeurs de la colonne `value`
-et appliquez votre fonction `handle_outliers` pour filtrer les valeurs
-physiques aberrantes (inférieures à 0 ou supérieures à 100).
+La colonne `date` a été convertie au format datetime afin de permettre
+des analyses temporelles : évolution des cas, agrégation par mois, suivi
+de la progression de l’épidémie.
 
-### 5. Imputation des valeurs manquantes
+### 6. Suppression des agrégats non-pays
 
-**À faire par l’étudiant :** Appliquez la fonction
-`impute_missing_values` pour remplir les NaNs issus du chargement
-initial ou du nettoyage des anomalies.
+Les lignes correspondant aux continents ou aux agrégats globaux ont été
+supprimées afin de conserver uniquement les observations par pays.
 
-### 6. Sauvegarde des données propres
+### 7. Suppression des colonnes redondantes
 
-Enregistrez votre DataFrame nettoyé dans
-`data/processed/cleaned_data_sample.csv`.
+### 8. Gestion des valeurs manquantes
+
+Les valeurs manquantes des colonnes numériques principales ont été
+imputées par la médiane. Ce choix permet de limiter l’influence des
+valeurs extrêmes, fréquentes dans les données épidémiologiques où
+certains pays peuvent concentrer un nombre de cas beaucoup plus élevé
+que d’autres.
+
+### 9. tri, suppression des doublons et validation finale
+
+### 10. Sauvegarde des données propres
+
+Pour ce projet, le travail de data wrangling comprend :
+
+- chargement du CSV brut ;
+- audit initial du dataset : dimensions, types, valeurs manquantes et
+  doublons ;
+- conversion de la colonne date au format datetime ;
+- suppression des agrégats globaux et continentaux ;
+- renommage des colonnes principales ;
+- traitement des valeurs manquantes par imputation ;
+- suppression des colonnes redondantes ou peu utiles pour l’analyse ;
+- vérification et suppression des doublons ;
+- tri des données par pays et par date ;
+- sauvegarde du dataset nettoyé pour l’analyse exploratoire.
 
 ------------------------------------------------------------------------
 
