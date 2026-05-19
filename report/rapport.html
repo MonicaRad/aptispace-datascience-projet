@@ -143,8 +143,6 @@ window.Quarto = {
   <li><a href="#sec-wrangling" id="toc-sec-wrangling" class="nav-link" data-scroll-target="#sec-wrangling"><span class="header-section-number">2</span> Acquisition et Préparation des Données (Data Wrangling)</a>
   <ul class="collapse">
   <li><a href="#audit-de-qualité" id="toc-audit-de-qualité" class="nav-link" data-scroll-target="#audit-de-qualité"><span class="header-section-number">2.1</span> Audit de Qualité</a></li>
-  <li><a href="#algorithme-de-nettoyage" id="toc-algorithme-de-nettoyage" class="nav-link" data-scroll-target="#algorithme-de-nettoyage"><span class="header-section-number">2.2</span> Algorithme de Nettoyage</a></li>
-  <li><a href="#travaux-pratiques-de-wrangling" id="toc-travaux-pratiques-de-wrangling" class="nav-link" data-scroll-target="#travaux-pratiques-de-wrangling"><span class="header-section-number">2.3</span> Travaux Pratiques de Wrangling</a></li>
   </ul></li>
   <li><a href="#jalon-1-data-wrangling-nettoyage-squelette-étudiant" id="toc-jalon-1-data-wrangling-nettoyage-squelette-étudiant" class="nav-link" data-scroll-target="#jalon-1-data-wrangling-nettoyage-squelette-étudiant"><span class="header-section-number">3</span> 🧹 Jalon 1 : Data Wrangling &amp; Nettoyage (Squelette Étudiant)</a>
   <ul class="collapse">
@@ -158,8 +156,8 @@ window.Quarto = {
   <li><a href="#sec-eda" id="toc-sec-eda" class="nav-link" data-scroll-target="#sec-eda"><span class="header-section-number">4</span> Analyse Exploratoire des Données (EDA)</a>
   <ul class="collapse">
   <li><a href="#statistiques-descriptives" id="toc-statistiques-descriptives" class="nav-link" data-scroll-target="#statistiques-descriptives"><span class="header-section-number">4.1</span> Statistiques Descriptives</a></li>
-  <li><a href="#ingénierie-de-variables-feature-engineering" id="toc-ingénierie-de-variables-feature-engineering" class="nav-link" data-scroll-target="#ingénierie-de-variables-feature-engineering"><span class="header-section-number">4.2</span> Ingénierie de Variables (Feature Engineering)</a></li>
-  <li><a href="#travaux-pratiques-dexploration-visuelle-eda" id="toc-travaux-pratiques-dexploration-visuelle-eda" class="nav-link" data-scroll-target="#travaux-pratiques-dexploration-visuelle-eda"><span class="header-section-number">4.3</span> Travaux Pratiques d’Exploration Visuelle (EDA)</a></li>
+  <li><a href="#statistiques-descriptives-1" id="toc-statistiques-descriptives-1" class="nav-link" data-scroll-target="#statistiques-descriptives-1"><span class="header-section-number">4.2</span> Statistiques Descriptives</a></li>
+  <li><a href="#ingénierie-de-variables-feature-engineering" id="toc-ingénierie-de-variables-feature-engineering" class="nav-link" data-scroll-target="#ingénierie-de-variables-feature-engineering"><span class="header-section-number">4.3</span> Ingénierie de Variables (Feature Engineering)</a></li>
   </ul></li>
   <li><a href="#jalon-1-analyse-exploratoire-des-données-eda-visualisation-squelette-étudiant" id="toc-jalon-1-analyse-exploratoire-des-données-eda-visualisation-squelette-étudiant" class="nav-link" data-scroll-target="#jalon-1-analyse-exploratoire-des-données-eda-visualisation-squelette-étudiant"><span class="header-section-number">5</span> 📊 Jalon 1 : Analyse Exploratoire des Données (EDA) &amp; Visualisation (Squelette Étudiant)</a>
   <ul class="collapse">
@@ -279,16 +277,11 @@ window.Quarto = {
 <p>Le succès de tout projet de Data Science repose sur la qualité de la préparation des données <span class="citation" data-cites="pandas2020">(<a href="#ref-pandas2020" role="doc-biblioref">McKinney 2020</a>)</span>. Cette section documente l’audit de qualité et les étapes de nettoyage appliquées à vos jeux de données bruts.</p>
 <section id="audit-de-qualité" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="audit-de-qualité"><span class="header-section-number">2.1</span> Audit de Qualité</h2>
-<p><em>À rédiger par les étudiants : Présentez un audit critique complet de vos fichiers de données brutes. Indiquez la liste des anomalies physiques et typologiques détectées (formats de dates hétérogènes, outliers physiques, taux de valeurs manquantes, etc.).</em></p>
-<p>[Rédiger votre audit de données ici]</p>
-</section>
-<section id="algorithme-de-nettoyage" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="algorithme-de-nettoyage"><span class="header-section-number">2.2</span> Algorithme de Nettoyage</h2>
-<p><em>À rédiger par les étudiants : Justifiez et détaillez l’enchaînement de vos opérations de traitement (uniformisation des dates, masquage des outliers, imputation, etc.). Faites référence aux fonctions correspondantes de votre module <code>src/data_clean.py</code>.</em></p>
-<p>[Rédiger la justification méthodologique ici]</p>
-</section>
-<section id="travaux-pratiques-de-wrangling" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="travaux-pratiques-de-wrangling"><span class="header-section-number">2.3</span> Travaux Pratiques de Wrangling</h2>
+<p>Le fichier de données a été vérifié sur les aspects essentiels de qualité, notamment la structure des colonnes, la présence de valeurs manquantes et la présence éventuelle de doublons. L’audit a montré que certaines colonnes contenaient trop de cases vides, ce qui risquait de nuire à la fiabilité des analyses.</p>
+<p>Nous avons donc choisi de supprimer ces colonnes afin de conserver uniquement les variables réellement exploitables. En parallèle, les doublons ont aussi été contrôlés pour éviter les répétitions dans le jeu de données et garantir une base plus propre.</p>
+<p>Après ce tri, les données restantes ont pu être analysées sans difficulté majeure. Le dataset final est donc mieux adapté aux étapes d’exploration, de visualisation et de modélisation. ## Algorithme de Nettoyage Le traitement des données a commencé par un nettoyage des dates afin d’obtenir un format homogène et exploitable pour l’analyse temporelle. Nous avons ensuite supprimé les colonnes contenant trop de valeurs manquantes, car elles apportaient peu d’information et risquaient de fragiliser les analyses.</p>
+<p>Comme le jeu de données contenait à la fois des informations au niveau des pays et des continents, nous avons conservé uniquement les données par pays afin d’avoir une analyse plus précise et plus cohérente.</p>
+<p>Enfin, nous avons supprimé les colonnes jugées non utiles car redondantes, afin de simplifier le jeu de données et de garder uniquement les variables pertinentes pour l’analyse. Nous avons également recalculé les valeurs totals death pour les valeurs manquantes, afin de garantir la cohérence des données avant l’analyse. Les données sont ensuite triées par pays et date afin d’avoir une meilleure visibilité. Ces étapes ont permis de travailler sur une base plus propre, plus homogène et mieux adaptée aux analyses et à la modélisation. ## Travaux Pratiques de Wrangling</p>
 </section>
 </section>
 <section id="jalon-1-data-wrangling-nettoyage-squelette-étudiant" class="level1" data-number="3">
@@ -324,16 +317,17 @@ window.Quarto = {
 <p>Dans cette section, nous analysons les relations statistiques fondamentales qui régissent votre domaine d’étude au sein du jeu de données.</p>
 <section id="statistiques-descriptives" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="statistiques-descriptives"><span class="header-section-number">4.1</span> Statistiques Descriptives</h2>
-<p><em>À rédiger par les étudiants : Présentez une vue d’ensemble descriptive rapide de vos variables nettoyées.</em></p>
-<p>[Rédiger les statistiques descriptives ici]</p>
 </section>
-<section id="ingénierie-de-variables-feature-engineering" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="ingénierie-de-variables-feature-engineering"><span class="header-section-number">4.2</span> Ingénierie de Variables (Feature Engineering)</h2>
-<p><em>À rédiger par les étudiants : Expliquez l’intérêt mathématique et l’impact sur les modèles prédictifs d’extraire des caractéristiques dérivées (ex: variables cycliques temporelles, ratios financiers, ratios physiques, etc.).</em></p>
-<p>[Rédiger votre explication de l’ingénierie de variables ici]</p>
+<section id="statistiques-descriptives-1" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="statistiques-descriptives-1"><span class="header-section-number">4.2</span> Statistiques Descriptives</h2>
+<p>Le jeu de données nettoyé contient les variables principales liées au suivi du Mpox, notamment le pays, la date, le nombre total de cas, le nombre total de décès, les nouveaux cas quotidiens et les nouveaux décès quotidiens. Les premières observations montrent une structure temporelle cohérente, avec des valeurs numériques qui varient selon les pays.</p>
+<p>Les variables cumulées comme <code>total_cases</code> et <code>total_deaths</code> permettent de suivre l’évolution globale de l’épidémie, tandis que les variables journalières <code>daily_new_cases</code> et <code>daily_new_deaths</code> mettent en évidence les fluctuations d’un jour à l’autre. On observe aussi que, dans certains pays, les décès restent nuls sur plusieurs périodes, ce qui traduit une faible mortalité observée dans ces données.</p>
+<p>Dans l’ensemble, les variables nettoyées sont bien adaptées à une analyse descriptive, car elles permettent de comparer les pays, d’étudier l’évolution dans le temps et d’identifier les zones où la propagation est la plus marquée.</p>
 </section>
-<section id="travaux-pratiques-dexploration-visuelle-eda" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="travaux-pratiques-dexploration-visuelle-eda"><span class="header-section-number">4.3</span> Travaux Pratiques d’Exploration Visuelle (EDA)</h2>
+<section id="ingénierie-de-variables-feature-engineering" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="ingénierie-de-variables-feature-engineering"><span class="header-section-number">4.3</span> Ingénierie de Variables (Feature Engineering)</h2>
+<p>Dans notre cas, l’ingénierie de variables est restée assez limitée, car le dataset contient déjà les informations utiles pour suivre l’évolution du Mpox. Nous avons donc conservé les variables principales comme le pays, la date, les nouveaux cas, les nouveaux décès, les cas totaux et les décès totaux. Quand certaines valeurs de total_deaths étaient manquantes, nous les avons recalculées à partir des informations disponibles afin de garder une variable exploitable et cohérente.</p>
+<p>L’intérêt de cette étape est de s’assurer que les données utilisées pour la suite du projet soient fiables et complètes. Cela permet aussi de garder une base propre pour l’analyse descriptive et la modélisation, sans ajouter de variables artificielles qui ne viennent pas du dataset. En pratique, cela montre une démarche rigoureuse de préparation des données, ce qui est important dans un projet de data science. Cette étape a surtout servi à nettoyer, compléter et organiser les variables déjà présentes, plutôt qu’à créer de nouvelles caractéristiques. C’est une approche adaptée à un rapport étudiant, parce qu’elle reste fidèle aux données réelles et au travail effectivement réalisé. ## Travaux Pratiques d’Exploration Visuelle (EDA)</p>
 </section>
 </section>
 <section id="jalon-1-analyse-exploratoire-des-données-eda-visualisation-squelette-étudiant" class="level1" data-number="5">
@@ -1066,144 +1060,152 @@ Team, Quarto Development. 2024. <span>“Quarto Dynamic Publishing System: Colla
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>Le succès de tout projet de Data Science repose sur la qualité de la préparation des données <span class="co">[</span><span class="ot">@pandas2020</span><span class="co">]</span>. Cette section documente l'audit de qualité et les étapes de nettoyage appliquées à vos jeux de données bruts.</span>
 <span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Audit de Qualité</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>*À rédiger par les étudiants : Présentez un audit critique complet de vos fichiers de données brutes. Indiquez la liste des anomalies physiques et typologiques détectées (formats de dates hétérogènes, outliers physiques, taux de valeurs manquantes, etc.).*</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>Le fichier de données a été vérifié sur les aspects essentiels de qualité, notamment la structure des colonnes, la présence de valeurs manquantes et la présence éventuelle de doublons. L’audit a montré que certaines colonnes contenaient trop de cases vides, ce qui risquait de nuire à la fiabilité des analyses.</span>
 <span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Rédiger votre audit de données ici</span><span class="co">]</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>Nous avons donc choisi de supprimer ces colonnes afin de conserver uniquement les variables réellement exploitables. En parallèle, les doublons ont aussi été contrôlés pour éviter les répétitions dans le jeu de données et garantir une base plus propre.</span>
 <span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Algorithme de Nettoyage</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>*À rédiger par les étudiants : Justifiez et détaillez l'enchaînement de vos opérations de traitement (uniformisation des dates, masquage des outliers, imputation, etc.). Faites référence aux fonctions correspondantes de votre module `src/data_clean.py`.*</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Rédiger la justification méthodologique ici</span><span class="co">]</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Travaux Pratiques de Wrangling</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>{{&lt; include notebooks/01_data_wrangling.qmd &gt;}}</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analyse Exploratoire des Données (EDA) {#sec-eda}</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>Dans cette section, nous analysons les relations statistiques fondamentales qui régissent votre domaine d'étude au sein du jeu de données.</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistiques Descriptives</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>*À rédiger par les étudiants : Présentez une vue d'ensemble descriptive rapide de vos variables nettoyées.*</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>Après ce tri, les données restantes ont pu être analysées sans difficulté majeure. Le dataset final est donc mieux adapté aux étapes d’exploration, de visualisation et de modélisation.</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Algorithme de Nettoyage</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>Le traitement des données a commencé par un nettoyage des dates afin d’obtenir un format homogène et exploitable pour l’analyse temporelle. Nous avons ensuite supprimé les colonnes contenant trop de valeurs manquantes, car elles apportaient peu d’information et risquaient de fragiliser les analyses.</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>Comme le jeu de données contenait à la fois des informations au niveau des pays et des continents, nous avons conservé uniquement les données par pays afin d’avoir une analyse plus précise et plus cohérente. </span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>Enfin, nous avons supprimé les colonnes jugées non utiles car redondantes, afin de simplifier le jeu de données et de garder uniquement les variables pertinentes pour l’analyse. Nous avons également recalculé les valeurs totals death pour les valeurs manquantes, afin de garantir la cohérence des données avant l’analyse.  Les données sont ensuite triées par pays et date afin d'avoir une meilleure visibilité.</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>Ces étapes ont permis de travailler sur une base plus propre, plus homogène et mieux adaptée aux analyses et à la modélisation.</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Travaux Pratiques de Wrangling</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>{{&lt; include notebooks/01_data_wrangling.qmd &gt;}}</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analyse Exploratoire des Données (EDA) {#sec-eda}</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>Dans cette section, nous analysons les relations statistiques fondamentales qui régissent votre domaine d'étude au sein du jeu de données.</span>
 <span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Rédiger les statistiques descriptives ici</span><span class="co">]</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ingénierie de Variables (Feature Engineering)</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>*À rédiger par les étudiants : Expliquez l'intérêt mathématique et l'impact sur les modèles prédictifs d'extraire des caractéristiques dérivées (ex: variables cycliques temporelles, ratios financiers, ratios physiques, etc.).*</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistiques Descriptives</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistiques Descriptives</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>Le jeu de données nettoyé contient les variables principales liées au suivi du Mpox, notamment le pays, la date, le nombre total de cas, le nombre total de décès, les nouveaux cas quotidiens et les nouveaux décès quotidiens. Les premières observations montrent une structure temporelle cohérente, avec des valeurs numériques qui varient selon les pays.</span>
 <span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Rédiger votre explication de l'ingénierie de variables ici</span><span class="co">]</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>Les variables cumulées comme <span class="in">`total_cases`</span> et <span class="in">`total_deaths`</span> permettent de suivre l’évolution globale de l’épidémie, tandis que les variables journalières <span class="in">`daily_new_cases`</span> et <span class="in">`daily_new_deaths`</span> mettent en évidence les fluctuations d’un jour à l’autre. On observe aussi que, dans certains pays, les décès restent nuls sur plusieurs périodes, ce qui traduit une faible mortalité observée dans ces données.</span>
 <span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="fu">## Travaux Pratiques d'Exploration Visuelle (EDA)</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>{{&lt; include notebooks/02_eda_visualisation.qmd &gt;}}</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="fu"># Visualisation Multidimensionnelle (Insights) {#sec-viz}</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>Nous présentons ici les résultats visuels clés permettant de dégager des insights exploitables pour les décideurs, en s'appuyant sur notre module <span class="in">`src/utils_viz.py`</span>.</span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>*À rédiger par les étudiants : Présentez et commentez en détail vos 3 à 5 insights majeurs découverts lors de l'exploration descriptive visuelle. Intégrez et justifiez les figures clés générées.*</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>Dans l’ensemble, les variables nettoyées sont bien adaptées à une analyse descriptive, car elles permettent de comparer les pays, d’étudier l’évolution dans le temps et d’identifier les zones où la propagation est la plus marquée.</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ingénierie de Variables (Feature Engineering)</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>Dans notre cas, l’ingénierie de variables est restée assez limitée, car le dataset contient déjà les informations utiles pour suivre l’évolution du Mpox. Nous avons donc conservé les variables principales comme le pays, la date, les nouveaux cas, les nouveaux décès, les cas totaux et les décès totaux. Quand certaines valeurs de total_deaths étaient manquantes, nous les avons recalculées à partir des informations disponibles afin de garder une variable exploitable et cohérente.</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>L’intérêt de cette étape est de s’assurer que les données utilisées pour la suite du projet soient fiables et complètes. Cela permet aussi de garder une base propre pour l’analyse descriptive et la modélisation, sans ajouter de variables artificielles qui ne viennent pas du dataset. En pratique, cela montre une démarche rigoureuse de préparation des données, ce qui est important dans un projet de data science.</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>Cette étape a surtout servi à nettoyer, compléter et organiser les variables déjà présentes, plutôt qu’à créer de nouvelles caractéristiques. C’est une approche adaptée à un rapport étudiant, parce qu’elle reste fidèle aux données réelles et au travail effectivement réalisé.</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## Travaux Pratiques d'Exploration Visuelle (EDA)</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>{{&lt; include notebooks/02_eda_visualisation.qmd &gt;}}</span>
 <span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Profils et Distributions Caractéristiques</span></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-distribution-density</span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Distribution ou profils caractéristiques de vos variables clés."</span></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Utiliser vos fonctions personnalisées de votre module pour tracer la figure</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Commenter la figure et décrire vos observations ici</span><span class="co">]</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Corrélations Globales</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-correlation</span></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Matrice de corrélation de Spearman ou de Pearson entre variables."</span></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Utiliser uv.plot_correlation_matrix() de votre module pour tracer la figure</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Commenter la figure et décrire vos observations ici</span><span class="co">]</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modélisation et Apprentissage {#sec-modelling}</span></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Schéma Global du Pipeline de Données</span></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>Le pipeline complet intègre à la fois la branche analytique tabulaire (Machine Learning) et la branche d'analyse visuelle ou de signaux complexes (Deep Learning CNN) :</span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="in">```mermaid</span></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>graph TD</span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>    A[Données Brutes Multi-Sources CSV/API] --&gt;|Formatage &amp; Alignement| B(data_clean.clean_dates)</span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>    C[Données Externes Complémentaires] --&gt;|Imputation &amp; Interpolation| D(data_clean.impute_missing_values)</span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>    B &amp; D --&gt;|Gestion Outliers| E[Jeu de données Propre &amp; Fusionné]</span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>    E --&gt;|Extraction Temporelle/Caractéristiques| F[Feature Engineering]</span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>    F --&gt;|Splits Temporels ou Stratifiés| G[Modèle Machine Learning Tabulaire]</span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>    H[Flux Multimédias Réels Images/Signaux] --&gt;|Prétraitement d<span class="ot">'</span><span class="ss">images/signaux| I[Réseau Convolutif CNN TensorFlow]</span></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="ss">    G --&gt;|Prédictions de la Problématique Métier| J[Livrables &amp; Aide à la Décision]</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="ss">    I --&gt;|Détection de Motifs Complexes| J</span></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span></span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="ss">    style E fill:#e0f2fe,stroke:#0284c7,stroke-width:2px</span></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="ss">    style J fill:#f0fdf4,stroke:#16a34a,stroke-width:2px</span></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="ss">    style G fill:#fef3c7,stroke:#d97706,stroke-width:2px</span></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="ss">    style I fill:#fef3c7,stroke:#d97706,stroke-width:2px</span></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="ss">```</span></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="ss">## Modélisation Tabulaire (Machine Learning)</span></span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="ss">*À rédiger par les étudiants : Expliquez le choix de vos algorithmes d</span><span class="ot">'</span>apprentissage (supervisé ou non supervisé) et décrivez l<span class="ot">'</span><span class="ss">importance des variables explicatives.*</span></span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="ss">[Détailler votre modélisation ici]</span></span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="ss">### Travaux Pratiques de Modélisation Tabulaire</span></span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="ss">{{&lt; include notebooks/03_modelisation_pred.qmd &gt;}}</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="fu"># Visualisation Multidimensionnelle (Insights) {#sec-viz}</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>Nous présentons ici les résultats visuels clés permettant de dégager des insights exploitables pour les décideurs, en s'appuyant sur notre module <span class="in">`src/utils_viz.py`</span>.</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>*À rédiger par les étudiants : Présentez et commentez en détail vos 3 à 5 insights majeurs découverts lors de l'exploration descriptive visuelle. Intégrez et justifiez les figures clés générées.*</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## Profils et Distributions Caractéristiques</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-distribution-density</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Distribution ou profils caractéristiques de vos variables clés."</span></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Utiliser vos fonctions personnalisées de votre module pour tracer la figure</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Commenter la figure et décrire vos observations ici</span><span class="co">]</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Corrélations Globales</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-correlation</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Matrice de corrélation de Spearman ou de Pearson entre variables."</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Utiliser uv.plot_correlation_matrix() de votre module pour tracer la figure</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Commenter la figure et décrire vos observations ici</span><span class="co">]</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modélisation et Apprentissage {#sec-modelling}</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## Schéma Global du Pipeline de Données</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>Le pipeline complet intègre à la fois la branche analytique tabulaire (Machine Learning) et la branche d'analyse visuelle ou de signaux complexes (Deep Learning CNN) :</span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="in">```mermaid</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>graph TD</span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>    A[Données Brutes Multi-Sources CSV/API] --&gt;|Formatage &amp; Alignement| B(data_clean.clean_dates)</span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>    C[Données Externes Complémentaires] --&gt;|Imputation &amp; Interpolation| D(data_clean.impute_missing_values)</span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>    B &amp; D --&gt;|Gestion Outliers| E[Jeu de données Propre &amp; Fusionné]</span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>    E --&gt;|Extraction Temporelle/Caractéristiques| F[Feature Engineering]</span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>    F --&gt;|Splits Temporels ou Stratifiés| G[Modèle Machine Learning Tabulaire]</span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>    H[Flux Multimédias Réels Images/Signaux] --&gt;|Prétraitement d<span class="ot">'</span><span class="ss">images/signaux| I[Réseau Convolutif CNN TensorFlow]</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="ss">    G --&gt;|Prédictions de la Problématique Métier| J[Livrables &amp; Aide à la Décision]</span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="ss">    I --&gt;|Détection de Motifs Complexes| J</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="ss">    style E fill:#e0f2fe,stroke:#0284c7,stroke-width:2px</span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="ss">    style J fill:#f0fdf4,stroke:#16a34a,stroke-width:2px</span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="ss">    style G fill:#fef3c7,stroke:#d97706,stroke-width:2px</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="ss">    style I fill:#fef3c7,stroke:#d97706,stroke-width:2px</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="ss">```</span></span>
 <span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="ss">## Modélisation Vision / Deep Learning (Analyse d</span><span class="ot">'</span>Images ou Signaux)</span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Expliquez l<span class="ot">'</span><span class="ss">intérêt de la brique de Deep Learning (images, signaux ou traitement de données structurées complexes) pour classifier ou enrichir vos prédictions. Détaillez l</span><span class="ot">'</span>architecture de votre réseau de neurones convolutif (CNN) conçu sous TensorFlow/Keras (conv, pooling, dense, dropout, activation) et commentez les courbes d<span class="ot">'</span><span class="ss">apprentissage obtenues.*</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="ss">## Modélisation Tabulaire (Machine Learning)</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="ss">*À rédiger par les étudiants : Expliquez le choix de vos algorithmes d</span><span class="ot">'</span>apprentissage (supervisé ou non supervisé) et décrivez l<span class="ot">'</span><span class="ss">importance des variables explicatives.*</span></span>
 <span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="ss">[Détailler votre architecture CNN et analyse ici]</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="ss">[Détailler votre modélisation ici]</span></span>
 <span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a><span class="ss">### Travaux Pratiques de Vision par Ordinateur (CNN)</span></span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="ss">{{&lt; include notebooks/04_vision_cnn_tf.qmd &gt;}}</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a><span class="ss">### Travaux Pratiques de Modélisation Tabulaire</span></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="ss">{{&lt; include notebooks/03_modelisation_pred.qmd &gt;}}</span></span>
 <span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="ss">---</span></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a><span class="ss"># Évaluation Métrique et Validation {#sec-evaluation}</span></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="ss">## Stratégie de Validation</span></span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="ss">*À rédiger par les étudiants : Expliquez pourquoi le découpage d</span><span class="ot">'</span>évaluation choisi (ex: validation temporelle, stratifiée ou par groupe) est adapté à la structure de vos données pour éviter les fuites de données.*</span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>[Rédiger la section de validation ici]</span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="co">## Résultats et Interprétation</span></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Complétez <span class="ot">le</span> tableau d<span class="ot">'</span><span class="ss">évaluation ci-dessous en reportant vos résultats de modélisation.*</span></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="ss">## Modélisation Vision / Deep Learning (Analyse d</span><span class="ot">'</span>Images ou Signaux)</span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Expliquez l<span class="ot">'</span><span class="ss">intérêt de la brique de Deep Learning (images, signaux ou traitement de données structurées complexes) pour classifier ou enrichir vos prédictions. Détaillez l</span><span class="ot">'</span>architecture de votre réseau de neurones convolutif (CNN) conçu sous TensorFlow/Keras (conv, pooling, dense, dropout, activation) et commentez les courbes d<span class="ot">'</span><span class="ss">apprentissage obtenues.*</span></span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="ss">[Détailler votre architecture CNN et analyse ici]</span></span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="ss">### Travaux Pratiques de Vision par Ordinateur (CNN)</span></span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="ss">{{&lt; include notebooks/04_vision_cnn_tf.qmd &gt;}}</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a><span class="ss">---</span></span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="ss"># Évaluation Métrique et Validation {#sec-evaluation}</span></span>
 <span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="ss">| Modèle | Métrique 1 (ex: MAE / Précision) | Métrique 2 (ex: RMSE / F1-Score) | R² / Score (%) |</span></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="ss">|--------|-----------------|------------------|-----------|</span></span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="ss">| Baseline (ex: Naïve / Moyenne) | [À compléter] | [À compléter] | [À compléter] |</span></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="ss">| **Modèle Choisi** | **[À compléter]** | **[À compléter]** | **[À compléter]** |</span></span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="ss">## Stratégie de Validation</span></span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="ss">*À rédiger par les étudiants : Expliquez pourquoi le découpage d</span><span class="ot">'</span>évaluation choisi (ex: validation temporelle, stratifiée ou par groupe) est adapté à la structure de vos données pour éviter les fuites de données.*</span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>[Rédiger la section de validation ici]</span>
 <span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="ss">[Interpréter et comparer les métriques d</span><span class="ot">'</span>erreur calculées ici]</span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Storytelling et Communication {#sec-storytelling}</span></span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="co">## Recommandations Stratégiques / Métier</span></span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Formulez des recommandations stratégiques, opérationnelles et innovantes basées sur vos découvertes analytiques et prédictives pour guider les décideurs.*</span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a>[Rédiger vos recommandations ici]</span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a><span class="co">## Limites et Perspectives</span></span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Identifiez honnêtement les biais ou limites de votre approche et proposez des pistes d<span class="ot">'</span><span class="ss">amélioration futures (ex: intégration de données externes réelles, modélisation plus poussée).*</span></span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="co">## Résultats et Interprétation</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Complétez <span class="ot">le</span> tableau d<span class="ot">'</span><span class="ss">évaluation ci-dessous en reportant vos résultats de modélisation.*</span></span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="ss">| Modèle | Métrique 1 (ex: MAE / Précision) | Métrique 2 (ex: RMSE / F1-Score) | R² / Score (%) |</span></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a><span class="ss">|--------|-----------------|------------------|-----------|</span></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="ss">| Baseline (ex: Naïve / Moyenne) | [À compléter] | [À compléter] | [À compléter] |</span></span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="ss">| **Modèle Choisi** | **[À compléter]** | **[À compléter]** | **[À compléter]** |</span></span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a><span class="ss">[Interpréter et comparer les métriques d</span><span class="ot">'</span>erreur calculées ici]</span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Storytelling et Communication {#sec-storytelling}</span></span>
 <span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a><span class="ss">[Rédiger les limites et perspectives ici]</span></span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a><span class="ss">Ce document dynamique a été compilé en Quarto [@quarto2024].</span></span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a><span class="ss">---</span></span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="ss"># Bibliographie {.unnumbered}</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a><span class="co">## Recommandations Stratégiques / Métier</span></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Formulez des recommandations stratégiques, opérationnelles et innovantes basées sur vos découvertes analytiques et prédictives pour guider les décideurs.*</span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>[Rédiger vos recommandations ici]</span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a><span class="co">## Limites et Perspectives</span></span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="wa">*À</span> rédiger par les étudiants : Identifiez honnêtement les biais ou limites de votre approche et proposez des pistes d<span class="ot">'</span><span class="ss">amélioration futures (ex: intégration de données externes réelles, modélisation plus poussée).*</span></span>
 <span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="ss">::: {#refs}</span></span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a><span class="ss">:::</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="ss">[Rédiger les limites et perspectives ici]</span></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="ss">Ce document dynamique a été compilé en Quarto [@quarto2024].</span></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="ss">---</span></span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a><span class="ss"># Bibliographie {.unnumbered}</span></span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a><span class="ss">::: {#refs}</span></span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="ss">:::</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
