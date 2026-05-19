@@ -1,59 +1,7 @@
 === STDOUT ===
-Version TensorFlow : 2.21.0
-GPU Disponible : []
-Dataset d'images généré. Dimensions : (100, 64, 64, 3)
-Taille Train : 80 images, Taille Val : 20 images
-Model: "sequential"
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
-┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
-│ conv2d (Conv2D)                 │ (None, 62, 62, 16)     │           448 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ max_pooling2d (MaxPooling2D)    │ (None, 31, 31, 16)     │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ conv2d_1 (Conv2D)               │ (None, 29, 29, 32)     │         4,640 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ max_pooling2d_1 (MaxPooling2D)  │ (None, 14, 14, 32)     │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ flatten (Flatten)               │ (None, 6272)           │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense (Dense)                   │ (None, 32)             │       200,736 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dropout (Dropout)               │ (None, 32)             │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense_1 (Dense)                 │ (None, 1)              │            33 │
-└─────────────────────────────────┴────────────────────────┴───────────────┘
- Total params: 205,857 (804.13 KB)
- Trainable params: 205,857 (804.13 KB)
- Non-trainable params: 0 (0.00 B)
-Epoch 1/5
-
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m1s[0m 931ms/step - accuracy: 0.5625 - loss: 0.6867
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 101ms/step - accuracy: 0.5625 - loss: 0.6707 - val_accuracy: 1.0000 - val_loss: 0.4704
-Epoch 2/5
-
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 36ms/step - accuracy: 1.0000 - loss: 0.4596
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - accuracy: 1.0000 - loss: 0.3983 - val_accuracy: 1.0000 - val_loss: 0.2452
-Epoch 3/5
-
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 35ms/step - accuracy: 1.0000 - loss: 0.2284
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 1.0000 - loss: 0.1753 - val_accuracy: 1.0000 - val_loss: 0.0782
-Epoch 4/5
-
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 36ms/step - accuracy: 1.0000 - loss: 0.0684
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 1.0000 - loss: 0.0546 - val_accuracy: 1.0000 - val_loss: 0.0215
-Epoch 5/5
-
-[1m1/3[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 36ms/step - accuracy: 1.0000 - loss: 0.0270
-[1m3/3[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - accuracy: 1.0000 - loss: 0.0174 - val_accuracy: 1.0000 - val_loss: 0.0050
 
 === STDERR ===
-WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1779201636.174950    2654 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-I0000 00:00:1779201636.217263    2654 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1779201637.739296    2654 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-E0000 00:00:1779201639.137126    2654 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
-/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/keras/src/layers/convolutional/base_conv.py:113: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
-  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+Traceback (most recent call last):
+  File "/home/runner/work/aptispace-datascience-projet/aptispace-datascience-projet/src/04_vision_cnn_tf.py", line 11, in <module>
+    import tensorflow as tf
+ModuleNotFoundError: No module named 'tensorflow'
