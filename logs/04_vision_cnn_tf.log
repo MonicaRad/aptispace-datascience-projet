@@ -1,7 +1,7 @@
 === STDOUT ===
 
 === STDERR ===
-Traceback (most recent call last):
-  File "/home/runner/work/aptispace-datascience-projet/aptispace-datascience-projet/src/04_vision_cnn_tf.py", line 11, in <module>
-    import tensorflow as tf
-ModuleNotFoundError: No module named 'tensorflow'
+  File "C:\Users\aklih\rendu-data\aptispace-datascience-projet\src\04_vision_cnn_tf.py", line 2
+    sys.path.append('C:\Users\aklih\rendu-data\aptispace-datascience-projet')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape

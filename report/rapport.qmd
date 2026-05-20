@@ -23,9 +23,10 @@ format:
     toc: true
     toc-depth: 2
 execute:
-  eval: false
+  eval: true
   echo: false
   warning: false
+  message: false
 bibliography: references.bib
 link-citations: true
 ---
@@ -53,7 +54,7 @@ L’analyse quantitative est indispensable car elle transforme des données brut
 ## Objectif Analytique
 Les variables cibles principales sont la date, le pays, les new cases et new deaths (nouveaux cas et décès quotidiens), ainsi que les total cases et total deaths (cas et décès cumulés). L'objectif est d'analyser l'évolution de ces indicateurs dans le temps et d'identifier les pays les plus touchés par le Mpox.
 
-Ce dataset est tabulaire avec des données épidémiologiques quotidiennes par pays sur une période d'un an. L'analyse se concentre sur ces 15 variables disponibles pour comprendre la dynamique de propagation du virus sans ajouter de données externes.
+Ce dataset est tabulaire avec des données épidémiologiques quotidiennes par pays sur une période d'un an. L’analyse se concentre sur les variables principales conservées après nettoyage
 
 
 
@@ -74,8 +75,7 @@ Le traitement des données a commencé par un nettoyage des dates afin d’obten
 
 Comme le jeu de données contenait à la fois des informations au niveau des pays et des continents, nous avons conservé uniquement les données par pays afin d’avoir une analyse plus précise et plus cohérente. 
 
-Enfin, nous avons supprimé les colonnes jugées non utiles car redondantes, afin de simplifier le jeu de données et de garder uniquement les variables pertinentes pour l’analyse. Nous avons également recalculé les valeurs totals death pour les valeurs manquantes, afin de garantir la cohérence des données avant l’analyse.  Les données sont ensuite triées par pays et date afin d'avoir une meilleure visibilité.
-Ces étapes ont permis de travailler sur une base plus propre, plus homogène et mieux adaptée aux analyses et à la modélisation.
+Enfin, nous avons supprimé les colonnes jugées non utiles car redondantes, afin de simplifier le jeu de données et de garder uniquement les variables pertinentes pour l’analyse. Nous avons également traité les valeurs manquantes de la variable `total_deaths` à l’aide d’une imputation adaptée, afin de garantir la cohérence du dataset avant l’analyse.
 ## Travaux Pratiques de Wrangling
 {{< include notebooks/01_data_wrangling.qmd >}}
 
@@ -85,7 +85,6 @@ Ces étapes ont permis de travailler sur une base plus propre, plus homogène et
 
 Dans cette section, nous analysons les relations statistiques fondamentales qui régissent votre domaine d'étude au sein du jeu de données.
 
-## Statistiques Descriptives
 ## Statistiques Descriptives
 
 Le jeu de données nettoyé contient les variables principales liées au suivi du Mpox, notamment le pays, la date, le nombre total de cas, le nombre total de décès, les nouveaux cas quotidiens et les nouveaux décès quotidiens. Les premières observations montrent une structure temporelle cohérente, avec des valeurs numériques qui varient selon les pays.
@@ -98,8 +97,8 @@ Dans l’ensemble, les variables nettoyées sont bien adaptées à une analyse d
 
 Dans notre cas, l’ingénierie de variables est restée assez limitée, car le dataset contient déjà les informations utiles pour suivre l’évolution du Mpox. Nous avons donc conservé les variables principales comme le pays, la date, les nouveaux cas, les nouveaux décès, les cas totaux et les décès totaux. Quand certaines valeurs de total_deaths étaient manquantes, nous les avons recalculées à partir des informations disponibles afin de garder une variable exploitable et cohérente.
 
-L’intérêt de cette étape est de s’assurer que les données utilisées pour la suite du projet soient fiables et complètes. Cela permet aussi de garder une base propre pour l’analyse descriptive et la modélisation, sans ajouter de variables artificielles qui ne viennent pas du dataset. En pratique, cela montre une démarche rigoureuse de préparation des données, ce qui est important dans un projet de data science.
-Cette étape a surtout servi à nettoyer, compléter et organiser les variables déjà présentes, plutôt qu’à créer de nouvelles caractéristiques. C’est une approche adaptée à un rapport étudiant, parce qu’elle reste fidèle aux données réelles et au travail effectivement réalisé.
+L’intérêt de cette étape est de s’assurer que les données utilisées pour la suite du projet soient fiables et complètes. Cela permet aussi de garder une base propre pour l’analyse descriptive et la modélisation. En pratique, cela montre une démarche rigoureuse de préparation des données, ce qui est important dans un projet de data science.
+Cette étape a surtout servi à nettoyer, compléter et organiser les variables déjà présentes et enrichir la colonne `date` avec des variables temporelles simples : l’année, le mois, le mois au format année-mois et le jour de la semaine. Ces variables permettent de faciliter les regroupements temporels et l’analyse de l’évolution du Mpox dans le temps. C’est une approche adaptée à un rapport étudiant, parce qu’elle reste fidèle aux données réelles et au travail effectivement réalisé.
 ## Travaux Pratiques d'Exploration Visuelle (EDA)
 {{< include notebooks/02_eda_visualisation.qmd >}}
 
@@ -209,7 +208,6 @@ graph TD
 [Détailler votre modélisation ici]
 
 ### Travaux Pratiques de Modélisation Tabulaire
-{{< include notebooks/03_modelisation_pred.qmd >}}
 
 ## Modélisation Vision / Deep Learning (Analyse d'Images ou Signaux)
 *À rédiger par les étudiants : Expliquez l'intérêt de la brique de Deep Learning (images, signaux ou traitement de données structurées complexes) pour classifier ou enrichir vos prédictions. Détaillez l'architecture de votre réseau de neurones convolutif (CNN) conçu sous TensorFlow/Keras (conv, pooling, dense, dropout, activation) et commentez les courbes d'apprentissage obtenues.*
@@ -217,7 +215,6 @@ graph TD
 [Détailler votre architecture CNN et analyse ici]
 
 ### Travaux Pratiques de Vision par Ordinateur (CNN)
-{{< include notebooks/04_vision_cnn_tf.qmd >}}
 
 ---
 
