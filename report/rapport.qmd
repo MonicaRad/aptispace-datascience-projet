@@ -104,51 +104,10 @@ Cette étape a surtout servi à nettoyer, compléter et organiser les variables 
 
 ---
 
-# Visualisation Multidimensionnelle (Insights) {#sec-viz}
 
 
 
-Cette figure montre l’évolution du nombre total de cas dans cinq pays au cours du temps. On observe d’abord une forte montée des cas à partir de l’été 2022, avec des rythmes différents selon les pays, puis une stabilisation progressive vers le début de l’année 2023.
 
-Un premier constat est que les États-Unis présentent le niveau de cas le plus élevé sur toute la période, avec une croissance rapide puis un plateau autour de 30 000 cas. Le Brésil arrive ensuite avec une progression plus lente mais continue, tandis que l’Espagne atteint également un niveau important avant de se stabiliser. La France et la Colombie affichent des volumes plus faibles, avec une montée plus tardive et une stabilisation autour de 4 000 cas.
-
-Cette figure permet donc de voir que la propagation du Mpox n’a pas été uniforme selon les pays. Elle met en évidence des dynamiques très différentes, ce qui justifie une analyse par pays plutôt qu’une lecture globale unique.
-## Répartition mondiale
-```python
-#| label: fig-correlation
-#| fig-cap: "Répartiton mondiale."
-#| echo: true
-
-import plotly.express as px
-
-map_data = (
-    df_feat.groupby("country", as_index=False)["total_cases"]
-    .max()
-    .sort_values(by="total_cases", ascending=False)
-)
-
-fig = px.choropleth(
-    map_data,
-    locations="country",
-    locationmode="country names",
-    color="total_cases",
-    hover_name="country",
-    color_continuous_scale="Reds",
-    title="Répartition mondiale des cas cumulés de Mpox par pays"
-)
-
-fig.update_layout(
-    title_x=0.5,
-    geo=dict(showframe=False, showcoastlines=True)
-)
-
-fig.show()
-```
-Cette carte montre la répartition mondiale des cas cumulés de Mpox par pays. On voit clairement que les cas sont très concentrés dans quelques pays, surtout en Amérique du Nord et en Amérique du Sud, tandis que la majorité des autres pays affichent des niveaux plus faibles.
-
-Un premier insight est que les États-Unis apparaissent comme le pays le plus touché sur cette carte, avec une couleur beaucoup plus foncée que les autres. On observe aussi un niveau élevé au Brésil, alors que les pays d’Europe, d’Afrique et d’Asie semblent globalement moins touchés dans ce jeu de données.
-
-Cette visualisation est utile car elle permet de repérer rapidement les zones géographiques les plus concernées. Elle confirme que la propagation du Mpox n’est pas homogène à l’échelle mondiale et qu’une approche par pays reste nécessaire pour bien interpréter les données.
 
 ---
 
