@@ -183,8 +183,10 @@ Cette visualisation est utile car elle permet de repérer rapidement les zones g
 # Modélisation et Apprentissage {#sec-modelling}
 
 ## Schéma Global du Pipeline de Données
-Le pipeline complet intègre à la fois la branche analytique tabulaire (Machine Learning) et la branche d'analyse visuelle ou de signaux complexes (Deep Learning CNN) :
 
+Après l’étape de nettoyage et d’analyse exploratoire, nous avons mis en place une première approche de modélisation prédictive. L’objectif n’est pas de prédire médicalement l’apparition de la maladie, mais plutôt d’estimer le nombre de nouveaux cas quotidiens de Mpox à partir de l’historique disponible dans le dataset.
+
+Le projet repose sur des données tabulaires organisées par pays et par date. Le pipeline est donc centré sur une approche de Machine Learning supervisé, avec une cible numérique : `daily_new_cases`.
 ```mermaid
 graph TD
     A[Données Brutes Multi-Sources CSV/API] -->|Formatage & Alignement| B(data_clean.clean_dates)
@@ -203,51 +205,102 @@ graph TD
 ```
 
 ## Modélisation Tabulaire (Machine Learning)
-*À rédiger par les étudiants : Expliquez le choix de vos algorithmes d'apprentissage (supervisé ou non supervisé) et décrivez l'importance des variables explicatives.*
+La modélisation réalisée dans ce projet correspond à un problème de régression supervisée. La variable cible choisie est daily_new_cases, qui représente le nombre de nouveaux cas quotidiens de Mpox.
 
-[Détailler votre modélisation ici]
+Ce choix est plus pertinent que la prédiction des cas cumulés (total_cases), car les cas cumulés augmentent mécaniquement au fil du temps. Prédire une variable cumulative risquerait donc de produire un résultat artificiellement bon, mais peu utile d’un point de vue analytique. À l’inverse, les nouveaux cas quotidiens sont plus difficiles à prédire, mais ils décrivent mieux la dynamique réelle de l’épidémie.
+
+Pour éviter de mélanger des comportements très différents entre pays, la modélisation a été réalisée sur un seul pays : celui qui présente le plus grand nombre de nouveaux cas cumulés dans le dataset. Cette décision permet de travailler sur une série temporelle plus cohérente, avec une dynamique locale mieux identifiable.
+
+Les variables explicatives utilisées sont principalement issues de l’historique des jours précédents. Nous avons créé plusieurs variables de retard, par exemple les nouveaux cas observés 1, 2, 3, 7, 14 et 21 jours auparavant. Nous avons également ajouté des moyennes mobiles et des maximums mobiles afin de lisser les variations quotidiennes et de mieux représenter les tendances récentes.
+
+Plusieurs modèles ont été comparés :
+
+une baseline naïve, qui prédit que les nouveaux cas du jour sont égaux à ceux de la veille ;
+un modèle Random Forest ;
+un modèle Extra Trees ;
+un modèle Gradient Boosting.
+
+La baseline naïve est importante, car elle sert de point de comparaison. Un modèle de Machine Learning n’est intéressant que s’il apporte une amélioration par rapport à une règle simple.
+
+Le modèle final est sélectionné automatiquement selon la MAE, c’est-à-dire l’erreur absolue moyenne. Cette métrique est adaptée à notre cas, car elle mesure directement l’écart moyen entre les nouveaux cas réels et les nouveaux cas prédits.
 
 ### Travaux Pratiques de Modélisation Tabulaire
 
-## Modélisation Vision / Deep Learning (Analyse d'Images ou Signaux)
-*À rédiger par les étudiants : Expliquez l'intérêt de la brique de Deep Learning (images, signaux ou traitement de données structurées complexes) pour classifier ou enrichir vos prédictions. Détaillez l'architecture de votre réseau de neurones convolutif (CNN) conçu sous TensorFlow/Keras (conv, pooling, dense, dropout, activation) et commentez les courbes d'apprentissage obtenues.*
+{{< include notebooks/03_modelisation_pred.qmd >}}
 
-[Détailler votre architecture CNN et analyse ici]
+## Modélisation Vision / Deep Learning
 
-### Travaux Pratiques de Vision par Ordinateur (CNN)
+La partie Deep Learning de type CNN n’a pas été retenue dans ce projet, car le dataset utilisé est un jeu de données tabulaire épidémiologique. Il ne contient pas d’images, de signaux ou de données visuelles nécessitant l’utilisation d’un réseau de neurones convolutif.
+
+Dans ce contexte, il est plus cohérent d’utiliser des modèles de régression tabulaire adaptés aux séries temporelles simples. Ce choix permet de rester aligné avec la nature réelle des données et d’éviter d’appliquer un modèle complexe qui ne serait pas justifié par le format du dataset.
 
 ---
 
 # Évaluation Métrique et Validation {#sec-evaluation}
 
 ## Stratégie de Validation
-*À rédiger par les étudiants : Expliquez pourquoi le découpage d'évaluation choisi (ex: validation temporelle, stratifiée ou par groupe) est adapté à la structure de vos données pour éviter les fuites de données.*
+La validation du modèle repose sur un découpage chronologique des données. Les premières observations de la série temporelle sont utilisées pour entraîner les modèles, tandis que les observations les plus récentes sont réservées au test.
 
-[Rédiger la section de validation ici]
+Ce choix est essentiel dans un projet temporel. Un split aléatoire classique mélangerait des observations passées et futures, ce qui pourrait provoquer une fuite de données. Le modèle pourrait alors apprendre indirectement des informations issues du futur, ce qui donnerait une évaluation trop optimiste.
+
+Le découpage chronologique simule une situation plus réaliste : on entraîne le modèle sur l’historique disponible, puis on teste sa capacité à prédire une période plus récente.
+
+Nous avons également utilisé des variables de retard et des moyennes mobiles calculées uniquement à partir des valeurs passées. Cela permet de respecter la causalité temporelle : pour prédire une date donnée, le modèle n’utilise pas d’information provenant de cette date ou des jours suivants.
 
 ## Résultats et Interprétation
-*À rédiger par les étudiants : Complétez le tableau d'évaluation ci-dessous en reportant vos résultats de modélisation.*
 
-| Modèle | Métrique 1 (ex: MAE / Précision) | Métrique 2 (ex: RMSE / F1-Score) | R² / Score (%) |
+Les modèles sont évalués à l’aide de trois métriques :
+
+MAE : erreur absolue moyenne. Elle indique de combien de cas le modèle se trompe en moyenne ;
+RMSE : racine de l’erreur quadratique moyenne. Elle pénalise davantage les grosses erreurs ;
+R² : coefficient de détermination. Il mesure la part de variance expliquée par le modèle.
+
+
+| Modèle | Métrique 1 (MAE / Précision) | Métrique 2 (RMSE / F1-Score) | Métrique 3 (R² / Score (%)) |
 |--------|-----------------|------------------|-----------|
-| Baseline (ex: Naïve / Moyenne) | [À compléter] | [À compléter] | [À compléter] |
-| **Modèle Choisi** | **[À compléter]** | **[À compléter]** | **[À compléter]** |
+| Baseline | 3.781250 | 9.022541 | -1.181799 |
+| **Random Forest** | **1.984375** | **5.789268** | **0.101735** |
 
-[Interpréter et comparer les métriques d'erreur calculées ici]
+La comparaison avec la baseline naïve permet d’évaluer si les modèles de Machine Learning apportent une réelle valeur ajoutée. Si le modèle choisi obtient une MAE plus faible que la baseline, cela signifie qu’il améliore la prédiction par rapport à une simple répétition de la valeur de la veille.
+
+Le graphique de comparaison entre les valeurs réelles et les prédictions montre que le modèle arrive à produire des estimations dans le même ordre de grandeur que les observations réelles. Cependant, certains pics de nouveaux cas restent difficiles à anticiper. Cette limite est normale, car les données épidémiologiques quotidiennes peuvent être très irrégulières.
+
+Les variations soudaines peuvent être liées à des facteurs qui ne sont pas présents dans le dataset, par exemple les retards de déclaration, les changements de politique de dépistage, les différences de surveillance sanitaire ou encore des événements locaux spécifiques.
+
+Ainsi, le modèle doit être interprété comme une première approche exploratoire de prédiction. Il permet de tester la faisabilité d’une prévision à partir des données disponibles, mais il ne doit pas être considéré comme un outil opérationnel de prévision sanitaire.
+
 
 ---
 
 # Data Storytelling et Communication {#sec-storytelling}
 
 ## Recommandations Stratégiques / Métier
-*À rédiger par les étudiants : Formulez des recommandations stratégiques, opérationnelles et innovantes basées sur vos découvertes analytiques et prédictives pour guider les décideurs.*
+L’analyse exploratoire et la modélisation montrent que la propagation du Mpox présente une forte dimension temporelle et géographique. Les cas ne sont pas répartis de manière uniforme entre les pays, et les dynamiques d’évolution peuvent fortement varier d’un territoire à l’autre.
 
-[Rédiger vos recommandations ici]
+Une première recommandation serait donc de mettre en place un suivi différencié par pays plutôt qu’une analyse uniquement mondiale. Les pays les plus touchés doivent faire l’objet d’un suivi plus détaillé, car ils concentrent une part importante des cas et présentent des dynamiques plus marquées.
+
+Une deuxième recommandation concerne l’importance du suivi temporel. Les nouveaux cas quotidiens étant très variables, il est préférable de compléter l’analyse journalière par des indicateurs lissés, comme les moyennes mobiles sur 7 ou 14 jours. Cela permet d’éviter de surinterpréter des pics isolés et de mieux identifier les tendances de fond.
+
+Enfin, la modélisation prédictive peut être utilisée comme un outil d’aide à la surveillance. Même si le modèle ne prédit pas parfaitement les pics, il permet d’identifier des tendances et de comparer les prédictions aux observations réelles. Un écart important entre la prédiction et la réalité pourrait signaler une variation inhabituelle nécessitant une analyse plus approfondie.
 
 ## Limites et Perspectives
-*À rédiger par les étudiants : Identifiez honnêtement les biais ou limites de votre approche et proposez des pistes d'amélioration futures (ex: intégration de données externes réelles, modélisation plus poussée).*
 
-[Rédiger les limites et perspectives ici]
+Le projet présente plusieurs limites importantes.
+
+Tout d’abord, le dataset utilisé contient principalement des informations sur les cas, les décès, les pays et les dates. Il ne contient pas de variables externes comme la population, le taux de dépistage, les mesures sanitaires, la couverture vaccinale ou les différences de systèmes de surveillance. Ces facteurs peuvent pourtant influencer fortement le nombre de cas déclarés.
+
+Ensuite, les données quotidiennes sont naturellement irrégulières. Certains pics peuvent être dus à des retards de déclaration ou à des corrections administratives, et non à une hausse réelle des contaminations. Cela rend la prédiction quotidienne particulièrement difficile.
+
+Une autre limite concerne le choix de modéliser un seul pays. Cette approche améliore la cohérence temporelle, mais elle limite la généralisation du modèle à d’autres pays. Chaque territoire peut avoir une dynamique différente, ce qui nécessiterait idéalement une modélisation spécifique par pays ou un modèle global plus avancé intégrant mieux les différences géographiques.
+
+Pour aller plus loin, plusieurs pistes d’amélioration sont possibles :
+
+intégrer des variables externes, comme la population ou le nombre de tests réalisés ;
+comparer davantage de modèles spécialisés dans les séries temporelles ;
+réaliser une validation temporelle glissante au lieu d’un seul split train/test ;
+
+
+
 
 Ce document dynamique a été compilé en Quarto [@quarto2024].
 
