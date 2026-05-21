@@ -1,5 +1,5 @@
 import os, sys
-sys.path.append('C:\Users\aklih\rendu-data\aptispace-datascience-projet')
+sys.path.append('C:\Users\Monica\aptispace-datascience-projet')
 
 # Installation automatique des dépendances requises dans le noyau Jupyter actuel
 # %pip install -r ../requirements.txt

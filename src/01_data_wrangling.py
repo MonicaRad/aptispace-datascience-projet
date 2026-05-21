@@ -1,5 +1,5 @@
 import os, sys
-sys.path.append('/home/runner/work/aptispace-datascience-projet/aptispace-datascience-projet')
+sys.path.append('C:\Users\Monica\aptispace-datascience-projet')
 
 # Installation automatique des dépendances requises dans le noyau Jupyter actuel
 # %pip install -r ../requirements.txt
@@ -15,7 +15,6 @@ sys.path.append(os.path.abspath('..'))
 from src import data_clean as dc
 
 print("Libraries importées avec succès ! Prêt à démarrer le Wrangling.")
-
 
 
 raw_data_path = "../data/raw/owid-monkeypox-data.csv"
