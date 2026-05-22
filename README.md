@@ -1,41 +1,71 @@
 # Mon Projet Data Science
+
 Étudiante 1 : Monica RADIFERA RASAMOELIJAONA, Étudiant 2 : Hocine AKLI
 2026-05-22
 
-- [Introduction et Contexte Métier](#sec-intro)
-  - [Contexte du Projet](#contexte-du-projet)
-  - [Objectif Analytique](#objectif-analytique)
-- [Acquisition et Préparation des Données (Data
-  Wrangling)](#sec-wrangling)
+- [Mon Projet Data Science](#mon-projet-data-science)
+- [📊 Mon Projet Data Science](#-mon-projet-data-science)
+  - [comment optimiser les moyens de prévention.](#comment-optimiser-les-moyens-de-prévention)
+  - [📥 Livrables du Projet (Rapports \& Supports)](#-livrables-du-projet-rapports--supports)
+- [Acquisition et Préparation des Données (Data Wrangling)](#acquisition-et-préparation-des-données-data-wrangling)
   - [Audit de Qualité](#audit-de-qualité)
-- [🧹 Jalon 1 : Data Wrangling & Nettoyage (Squelette
-  Étudiant)](#broom-jalon-1--data-wrangling--nettoyage-squelette-étudiant)
-- [Analyse Exploratoire des Données (EDA)](#sec-eda)
+- [🧹 Jalon 1 : Data Wrangling \& Nettoyage (Squelette Étudiant)](#-jalon-1--data-wrangling--nettoyage-squelette-étudiant)
+  - [1. Importation des packages et chargement des données](#1-importation-des-packages-et-chargement-des-données)
+  - [2. Audit initial des données](#2-audit-initial-des-données)
+  - [3. Nettoyage des colonnes inutile](#3-nettoyage-des-colonnes-inutile)
+  - [4. Renommage des colonnes](#4-renommage-des-colonnes)
+  - [5. Nettoyage de la date](#5-nettoyage-de-la-date)
+  - [6. Suppression des agrégats non-pays](#6-suppression-des-agrégats-non-pays)
+  - [7. Suppression des colonnes redondantes](#7-suppression-des-colonnes-redondantes)
+  - [8. Gestion des valeurs manquantes](#8-gestion-des-valeurs-manquantes)
+  - [9. tri, suppression des doublons et validation finale](#9-tri-suppression-des-doublons-et-validation-finale)
+  - [10. Sauvegarde des données propres](#10-sauvegarde-des-données-propres)
+- [Analyse Exploratoire des Données (EDA)](#analyse-exploratoire-des-données-eda)
   - [Statistiques Descriptives](#statistiques-descriptives)
-  - [Ingénierie de Variables (Feature
-    Engineering)](#ingénierie-de-variables-feature-engineering)
-- [📊 Jalon 1 : Analyse Exploratoire des Données (EDA) & Visualisation
-  (Squelette
-  Étudiant)](#bar_chart-jalon-1--analyse-exploratoire-des-données-eda--visualisation-squelette-étudiant)
-- [Modélisation et Apprentissage](#sec-modelling)
-  - [Schéma Global du Pipeline de
-    Données](#schéma-global-du-pipeline-de-données)
-  - [Modélisation Tabulaire (Machine
-    Learning)](#modélisation-tabulaire-machine-learning)
-- [🧠 Jalon 2 : Modélisation Prédictive & Apprentissage (Squelette
-  Étudiant)](#brain-jalon-2--modélisation-prédictive--apprentissage-squelette-étudiant)
-  - [Modélisation Vision / Deep
-    Learning](#modélisation-vision--deep-learning)
-- [Évaluation Métrique et Validation](#sec-evaluation)
+  - [Ingénierie de Variables (Feature Engineering)](#ingénierie-de-variables-feature-engineering)
+- [📊 Jalon 1 : Analyse Exploratoire des Données (EDA) \& Visualisation (Squelette Étudiant)](#-jalon-1--analyse-exploratoire-des-données-eda--visualisation-squelette-étudiant)
+  - [1. Importation des packages et configuration du style](#1-importation-des-packages-et-configuration-du-style)
+  - [2. Ingénierie de variables temporelles](#2-ingénierie-de-variables-temporelles)
+  - [3. Visualisations Professionnelles](#3-visualisations-professionnelles)
+    - [A. Profils d’évolution et tendances](#a-profils-dévolution-et-tendances)
+    - [B. Répartition mondiale des cas cumulés de mpox par pays](#b-répartition-mondiale-des-cas-cumulés-de-mpox-par-pays)
+    - [C. Carte animée de la propagation du mpox](#c-carte-animée-de-la-propagation-du-mpox)
+  - [4. Synthèse des observations clés](#4-synthèse-des-observations-clés)
+- [Modélisation et Apprentissage](#modélisation-et-apprentissage)
+  - [Schéma Global du Pipeline de Données](#schéma-global-du-pipeline-de-données)
+  - [Modélisation Tabulaire (Machine Learning)](#modélisation-tabulaire-machine-learning)
+    - [Travaux Pratiques de Modélisation Tabulaire](#travaux-pratiques-de-modélisation-tabulaire)
+- [🧠 Jalon 2 : Modélisation Prédictive \& Apprentissage (Squelette Étudiant)](#-jalon-2--modélisation-prédictive--apprentissage-squelette-étudiant)
+  - [1. Préparation de l’environnement](#1-préparation-de-lenvironnement)
+  - [2. Feature engineering](#2-feature-engineering)
+  - [3. Définition des variables et split chronologique](#3-définition-des-variables-et-split-chronologique)
+  - [4. Entraînement du modèle](#4-entraînement-du-modèle)
+  - [5. Évaluation métrique et sélection du meilleur modèle](#5-évaluation-métrique-et-sélection-du-meilleur-modèle)
+  - [6. Visualisation des prédictions quotidiennes](#6-visualisation-des-prédictions-quotidiennes)
+  - [Modélisation Vision / Deep Learning](#modélisation-vision--deep-learning)
+- [Évaluation Métrique et Validation](#évaluation-métrique-et-validation)
   - [Stratégie de Validation](#stratégie-de-validation)
   - [Résultats et Interprétation](#résultats-et-interprétation)
-- [Data Storytelling et Communication](#sec-storytelling)
-  - [Recommandations Stratégiques /
-    Métier](#recommandations-stratégiques--métier)
+- [Data Storytelling et Communication](#data-storytelling-et-communication)
+  - [Recommandations Stratégiques / Métier](#recommandations-stratégiques--métier)
   - [Limites et Perspectives](#limites-et-perspectives)
 - [Bibliographie](#bibliographie)
+  - [📂 Structure du Projet](#-structure-du-projet)
+  - [🛠️ Exécuter et compiler localement](#️-exécuter-et-compiler-localement)
+    - [1. Prérequis](#1-prérequis)
+    - [2. Commandes de compilation rapides](#2-commandes-de-compilation-rapides)
 
-# Introduction et Contexte Métier
+# 📊 Mon Projet Data Science
+
+[GitHub Release](../../releases/latest)
+[Quarto](https://quarto.org)
+[Typst](https://typst.app)
+[Python](https://python.org)
+
+> **Bienvenue dans le portail d'accueil de notre Projet Data Science.**
+> Ce dépôt contient l'intégralité du pipeline analytique (de l'acquisition multi-sources des données jusqu'à l'évaluation et la communication des résultats).
+>
+> Pour préserver la propreté de l'historique et simplifier la collaboration, **toutes les compilations de rapports sont déportées sur notre intégration continue (CI)**. Les livrables finaux sont publiés automatiquement à chaque mise à jour.
 
 [![](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml/badge.svg)](https://github.com/MonicaRad/aptispace-datascience-projet/actions/workflows/ci.yml)
 
@@ -53,7 +83,11 @@ L’objectif est d’offrir des insights utiles pour la prise de décision en
 santé publique : où surveiller davantage, quand anticiper un pic, et
 comment optimiser les moyens de prévention.
 
-## Contexte du Projet
+---
+
+## 📥 Livrables du Projet (Rapports & Supports)
+
+Les rapports compilés dans tous les formats, ainsi que le code source exécutable et ses journaux, sont mis à jour en temps réel à chaque push et disponibles au téléchargement sur la **[dernière version du Release GitHub](../../releases/latest)**.
 
 Ce projet étudie la propagation du Mpox dans le but de détecter des
 tendances et des zones à risque. Le domaine d’étude est la santé
@@ -69,8 +103,15 @@ L’analyse quantitative est indispensable car elle transforme des données
 brutes en indicateurs actionnables. Elle permet de mesurer objectivement
 l’évolution des cas, de comparer les pays et de fonder les décisions sur
 des faits plutôt que sur des intuitions.
+| Format | Description | Lien de Téléchargement |
+| :--- | :--- | :--- |
+| **📄 Rapport PDF** | Rapport complet mis en page de haute qualité via **Typst** | [**Télécharger le PDF**](../../releases/download/latest/rapport.pdf) |
+| **🌐 Rapport Interactif** | Rapport HTML complet intégrant le tableau de bord dynamique **Observable JS (OJS)** | [**Télécharger l'HTML**](../../releases/download/latest/rapport.html) |
+| **📝 Rapport Markdown** | Version de lecture rapide optimisée pour l'affichage GitHub | [**Consulter le Markdown**](../../releases/download/latest/README.md) |
+| **🧠 Scripts Python** | Archive compressée des scripts extraits de tous les notebooks | [**Télécharger les Sources (.zip)**](../../releases/download/latest/sources.zip) |
+| **🪵 Journaux d'Exécution** | Archive de tous les logs de compilation et d'exécution | [**Télécharger les Logs (.zip)**](../../releases/download/latest/logs.zip) |
 
-## Objectif Analytique
+---
 
 Les variables cibles principales sont la date, le pays, les new cases et
 new deaths (nouveaux cas et décès quotidiens), ainsi que les total cases
@@ -82,7 +123,7 @@ Ce dataset est tabulaire avec des données épidémiologiques quotidiennes
 par pays sur une période d’un an. L’analyse se concentre sur les
 variables principales conservées après nettoyage
 
-------------------------------------------------------------------------
+---
 
 # Acquisition et Préparation des Données (Data Wrangling)
 
@@ -126,12 +167,6 @@ dataset avant l’analyse. \## Travaux Pratiques de Wrangling
 
 # 🧹 Jalon 1 : Data Wrangling & Nettoyage (Squelette Étudiant)
 
-Ce notebook correspond à la première étape du **Jalon 1**. L’objectif
-est d’importer le jeu de données brut et d’effectuer un audit de sa
-qualité (données manquantes, anomalies physiques, formats de dates
-hétérogènes) et de le nettoyer à l’aide de votre package personnalisé
-`src.data_clean`.
-
 ### 1. Importation des packages et chargement des données
 
     Libraries importées avec succès ! Prêt à démarrer le Wrangling.
@@ -149,13 +184,13 @@ hétérogènes) et de le nettoyer à l’aide de votre package personnalisé
     }
 </style>
 
-|  | location | iso_code | date | total_cases | total_deaths | new_cases | new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
-|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| 0 | Africa | OWID_AFR | 2022-05-01 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 1 | Africa | OWID_AFR | 2022-05-02 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 2 | Africa | OWID_AFR | 2022-05-03 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 3 | Africa | OWID_AFR | 2022-05-04 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 4 | Africa | OWID_AFR | 2022-05-05 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
+|     | location | iso_code | date       | total_cases | total_deaths | new_cases | new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
+| --- | -------- | -------- | ---------- | ----------- | ------------ | --------- | ---------- | ------------------ | ------------------- | --------------------- | ----------------------- | ------------------------------ | ---------------------- | ------------------------ | ------------------------------- |
+| 0   | Africa   | OWID_AFR | 2022-05-01 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 1   | Africa   | OWID_AFR | 2022-05-02 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 2   | Africa   | OWID_AFR | 2022-05-03 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 3   | Africa   | OWID_AFR | 2022-05-04 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 4   | Africa   | OWID_AFR | 2022-05-05 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
 
 </div>
 
@@ -170,11 +205,11 @@ manquantes par variable ? - Y a-t-il des doublons ?
     <class 'pandas.DataFrame'>
     RangeIndex: 33666 entries, 0 to 33665
     Data columns (total 15 columns):
-     #   Column                           Non-Null Count  Dtype  
-    ---  ------                           --------------  -----  
-     0   location                         33666 non-null  str    
-     1   iso_code                         33666 non-null  str    
-     2   date                             33666 non-null  str    
+     #   Column                           Non-Null Count  Dtype
+    ---  ------                           --------------  -----
+     0   location                         33666 non-null  str
+     1   iso_code                         33666 non-null  str
+     2   date                             33666 non-null  str
      3   total_cases                      33666 non-null  float64
      4   total_deaths                     33666 non-null  float64
      5   new_cases                        33666 non-null  float64
@@ -243,16 +278,16 @@ manquantes par variable ? - Y a-t-il des doublons ?
     }
 </style>
 
-|  | total_cases | total_deaths | new_cases | new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
-|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| count | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 |
-| mean | 1938.869809 | 1.708489 | 7.783728 | 0.012297 | 7.781165 | 0.012120 | 0.078259 | 19.725986 | 0.077846 | 0.000081 | 0.011195 | 0.000080 |
-| std | 8459.303549 | 8.497967 | 63.686045 | 0.216703 | 49.289572 | 0.088667 | 0.923805 | 30.910935 | 0.394291 | 0.002657 | 0.041827 | 0.000991 |
-| min | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
-| 25% | 4.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.680000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
-| 50% | 21.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 4.878000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
-| 75% | 257.000000 | 0.000000 | 0.000000 | 0.000000 | 0.570000 | 0.000000 | 0.000000 | 29.362250 | 0.025000 | 0.000000 | 0.000000 | 0.000000 |
-| max | 87376.000000 | 140.000000 | 1802.000000 | 12.000000 | 1089.140000 | 1.710000 | 91.808000 | 183.615000 | 17.443000 | 0.226830 | 0.587380 | 0.031760 |
+|       | total_cases  | total_deaths | new_cases    | new_deaths   | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
+| ----- | ------------ | ------------ | ------------ | ------------ | ------------------ | ------------------- | --------------------- | ----------------------- | ------------------------------ | ---------------------- | ------------------------ | ------------------------------- |
+| count | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000 | 33666.000000       | 33666.000000        | 33666.000000          | 33666.000000            | 33666.000000                   | 33666.000000           | 33666.000000             | 33666.000000                    |
+| mean  | 1938.869809  | 1.708489     | 7.783728     | 0.012297     | 7.781165           | 0.012120            | 0.078259              | 19.725986               | 0.077846                       | 0.000081               | 0.011195                 | 0.000080                        |
+| std   | 8459.303549  | 8.497967     | 63.686045    | 0.216703     | 49.289572          | 0.088667            | 0.923805              | 30.910935               | 0.394291                       | 0.002657               | 0.041827                 | 0.000991                        |
+| min   | 0.000000     | 0.000000     | 0.000000     | 0.000000     | 0.000000           | 0.000000            | 0.000000              | 0.000000                | 0.000000                       | 0.000000               | 0.000000                 | 0.000000                        |
+| 25%   | 4.000000     | 0.000000     | 0.000000     | 0.000000     | 0.000000           | 0.000000            | 0.000000              | 0.680000                | 0.000000                       | 0.000000               | 0.000000                 | 0.000000                        |
+| 50%   | 21.000000    | 0.000000     | 0.000000     | 0.000000     | 0.000000           | 0.000000            | 0.000000              | 4.878000                | 0.000000                       | 0.000000               | 0.000000                 | 0.000000                        |
+| 75%   | 257.000000   | 0.000000     | 0.000000     | 0.000000     | 0.570000           | 0.000000            | 0.000000              | 29.362250               | 0.025000                       | 0.000000               | 0.000000                 | 0.000000                        |
+| max   | 87376.000000 | 140.000000   | 1802.000000  | 12.000000    | 1089.140000        | 1.710000            | 91.808000             | 183.615000              | 17.443000                      | 0.226830               | 0.587380                 | 0.031760                        |
 
 </div>
 
@@ -273,13 +308,13 @@ Supression de la colonne iso_code
     }
 </style>
 
-|  | location | date | total_cases | total_deaths | new_cases | new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
-|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| 0 | Africa | 2022-05-01 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 1 | Africa | 2022-05-02 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 2 | Africa | 2022-05-03 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 3 | Africa | 2022-05-04 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 4 | Africa | 2022-05-05 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
+|     | location | date       | total_cases | total_deaths | new_cases | new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
+| --- | -------- | ---------- | ----------- | ------------ | --------- | ---------- | ------------------ | ------------------- | --------------------- | ----------------------- | ------------------------------ | ---------------------- | ------------------------ | ------------------------------- |
+| 0   | Africa   | 2022-05-01 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 1   | Africa   | 2022-05-02 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 2   | Africa   | 2022-05-03 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 3   | Africa   | 2022-05-04 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 4   | Africa   | 2022-05-05 | 27.0        | 2.0          | 0.0       | 0.0        | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
 
 </div>
 
@@ -300,13 +335,13 @@ Renommage des colonnes cibles pour une analyse exploitable
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
-|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| 0 | Africa | 2022-05-01 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 1 | Africa | 2022-05-02 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 2 | Africa | 2022-05-03 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 3 | Africa | 2022-05-04 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
-| 4 | Africa | 2022-05-05 | 27.0 | 2.0 | 0.0 | 0.0 | 0.29 | 0.0 | 0.0 | 0.019 | 0.0 | 0.0 | 0.0014 | 0.0 |
+|     | country | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths | new_cases_smoothed | new_deaths_smoothed | new_cases_per_million | total_cases_per_million | new_cases_smoothed_per_million | new_deaths_per_million | total_deaths_per_million | new_deaths_smoothed_per_million |
+| --- | ------- | ---------- | ----------- | ------------ | --------------- | ---------------- | ------------------ | ------------------- | --------------------- | ----------------------- | ------------------------------ | ---------------------- | ------------------------ | ------------------------------- |
+| 0   | Africa  | 2022-05-01 | 27.0        | 2.0          | 0.0             | 0.0              | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 1   | Africa  | 2022-05-02 | 27.0        | 2.0          | 0.0             | 0.0              | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 2   | Africa  | 2022-05-03 | 27.0        | 2.0          | 0.0             | 0.0              | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 3   | Africa  | 2022-05-04 | 27.0        | 2.0          | 0.0             | 0.0              | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
+| 4   | Africa  | 2022-05-05 | 27.0        | 2.0          | 0.0             | 0.0              | 0.29               | 0.0                 | 0.0                   | 0.019                   | 0.0                            | 0.0                    | 0.0014                   | 0.0                             |
 
 </div>
 
@@ -332,7 +367,7 @@ de la progression de l’épidémie.
 </style>
 
 |     | date       |
-|-----|------------|
+| --- | ---------- |
 | 0   | 2022-05-01 |
 | 1   | 2022-05-02 |
 | 2   | 2022-05-03 |
@@ -376,13 +411,13 @@ supprimées afin de conserver uniquement les observations par pays.
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
-|----|----|----|----|----|----|----|
-| 370 | Andorra | 2022-07-25 | 2.0 | 0.0 | 2.0 | 0.0 |
-| 371 | Andorra | 2022-07-26 | 3.0 | 0.0 | 1.0 | 0.0 |
-| 372 | Andorra | 2022-07-27 | 3.0 | 0.0 | 0.0 | 0.0 |
-| 373 | Andorra | 2022-07-28 | 3.0 | 0.0 | 0.0 | 0.0 |
-| 374 | Andorra | 2022-07-29 | 3.0 | 0.0 | 0.0 | 0.0 |
+|     | country | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
+| --- | ------- | ---------- | ----------- | ------------ | --------------- | ---------------- |
+| 370 | Andorra | 2022-07-25 | 2.0         | 0.0          | 2.0             | 0.0              |
+| 371 | Andorra | 2022-07-26 | 3.0         | 0.0          | 1.0             | 0.0              |
+| 372 | Andorra | 2022-07-27 | 3.0         | 0.0          | 0.0             | 0.0              |
+| 373 | Andorra | 2022-07-28 | 3.0         | 0.0          | 0.0             | 0.0              |
+| 374 | Andorra | 2022-07-29 | 3.0         | 0.0          | 0.0             | 0.0              |
 
 </div>
 
@@ -415,13 +450,13 @@ que d’autres.
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
-|----|----|----|----|----|----|----|
-| 0 | Andorra | 2022-07-25 | 2.0 | 0.0 | 2.0 | 0.0 |
-| 1 | Andorra | 2022-07-26 | 3.0 | 0.0 | 1.0 | 0.0 |
-| 2 | Andorra | 2022-07-27 | 3.0 | 0.0 | 0.0 | 0.0 |
-| 3 | Andorra | 2022-07-28 | 3.0 | 0.0 | 0.0 | 0.0 |
-| 4 | Andorra | 2022-07-29 | 3.0 | 0.0 | 0.0 | 0.0 |
+|     | country | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
+| --- | ------- | ---------- | ----------- | ------------ | --------------- | ---------------- |
+| 0   | Andorra | 2022-07-25 | 2.0         | 0.0          | 2.0             | 0.0              |
+| 1   | Andorra | 2022-07-26 | 3.0         | 0.0          | 1.0             | 0.0              |
+| 2   | Andorra | 2022-07-27 | 3.0         | 0.0          | 0.0             | 0.0              |
+| 3   | Andorra | 2022-07-28 | 3.0         | 0.0          | 0.0             | 0.0              |
+| 4   | Andorra | 2022-07-29 | 3.0         | 0.0          | 0.0             | 0.0              |
 
 </div>
 
@@ -457,7 +492,7 @@ Pour ce projet, le travail de data wrangling comprend :
 
     Données nettoyées sauvegardées dans : ../data/processed/owid-monkeypox-data_clean.csv
 
-------------------------------------------------------------------------
+---
 
 # Analyse Exploratoire des Données (EDA)
 
@@ -534,13 +569,13 @@ générer des graphiques professionnels.
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
-|----|----|----|----|----|----|----|
-| 0 | Andorra | 2022-07-25 | 2.0 | 0.0 | 2.0 | 0.0 |
-| 1 | Andorra | 2022-07-26 | 3.0 | 0.0 | 1.0 | 0.0 |
-| 2 | Andorra | 2022-07-27 | 3.0 | 0.0 | 0.0 | 0.0 |
-| 3 | Andorra | 2022-07-28 | 3.0 | 0.0 | 0.0 | 0.0 |
-| 4 | Andorra | 2022-07-29 | 3.0 | 0.0 | 0.0 | 0.0 |
+|     | country | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
+| --- | ------- | ---------- | ----------- | ------------ | --------------- | ---------------- |
+| 0   | Andorra | 2022-07-25 | 2.0         | 0.0          | 2.0             | 0.0              |
+| 1   | Andorra | 2022-07-26 | 3.0         | 0.0          | 1.0             | 0.0              |
+| 2   | Andorra | 2022-07-27 | 3.0         | 0.0          | 0.0             | 0.0              |
+| 3   | Andorra | 2022-07-28 | 3.0         | 0.0          | 0.0             | 0.0              |
+| 4   | Andorra | 2022-07-29 | 3.0         | 0.0          | 0.0             | 0.0              |
 
 </div>
 
@@ -562,13 +597,13 @@ enrichir votre DataFrame en caractéristiques de temps classiques .
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths | year | month | year_month | dayofweek |
-|----|----|----|----|----|----|----|----|----|----|----|
-| 0 | Andorra | 2022-07-25 | 2.0 | 0.0 | 2.0 | 0.0 | 2022 | 7 | 2022-07 | 0 |
-| 1 | Andorra | 2022-07-26 | 3.0 | 0.0 | 1.0 | 0.0 | 2022 | 7 | 2022-07 | 1 |
-| 2 | Andorra | 2022-07-27 | 3.0 | 0.0 | 0.0 | 0.0 | 2022 | 7 | 2022-07 | 2 |
-| 3 | Andorra | 2022-07-28 | 3.0 | 0.0 | 0.0 | 0.0 | 2022 | 7 | 2022-07 | 3 |
-| 4 | Andorra | 2022-07-29 | 3.0 | 0.0 | 0.0 | 0.0 | 2022 | 7 | 2022-07 | 4 |
+|     | country | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths | year | month | year_month | dayofweek |
+| --- | ------- | ---------- | ----------- | ------------ | --------------- | ---------------- | ---- | ----- | ---------- | --------- |
+| 0   | Andorra | 2022-07-25 | 2.0         | 0.0          | 2.0             | 0.0              | 2022 | 7     | 2022-07    | 0         |
+| 1   | Andorra | 2022-07-26 | 3.0         | 0.0          | 1.0             | 0.0              | 2022 | 7     | 2022-07    | 1         |
+| 2   | Andorra | 2022-07-27 | 3.0         | 0.0          | 0.0             | 0.0              | 2022 | 7     | 2022-07    | 2         |
+| 3   | Andorra | 2022-07-28 | 3.0         | 0.0          | 0.0             | 0.0              | 2022 | 7     | 2022-07    | 3         |
+| 4   | Andorra | 2022-07-29 | 3.0         | 0.0          | 0.0             | 0.0              | 2022 | 7     | 2022-07    | 4         |
 
 </div>
 
@@ -611,7 +646,7 @@ l’intensité de l’épidémie entre les pays.
         if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
         </script>
         <script type="module">import "https://cdn.plot.ly/plotly-3.5.0.min"</script>
-        
+
 
 <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
         <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="7ee0d99c-be02-4577-a025-7c6066b75e14" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("7ee0d99c-be02-4577-a025-7c6066b75e14")) {                    Plotly.newPlot(                        "7ee0d99c-be02-4577-a025-7c6066b75e14",                        [{"coloraxis":"coloraxis","geo":"geo","hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecountry=%{location}\u003cbr\u003etotal_cases=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["United States","Brazil","Spain","France","Colombia","Mexico","Peru","United Kingdom","Germany","Canada","Chile","Netherlands","Argentina","Italy","Portugal","Nigeria","Belgium","Democratic Republic of Congo","Switzerland","Ecuador","Guatemala","Austria","Bolivia","Israel","Sweden","Ireland","Panama","Costa Rica","Poland","Denmark","Australia","Japan","Paraguay","Ghana","El Salvador","Norway","Greece","Hungary","China","Czechia","South Korea","Luxembourg","Dominican Republic","Romania","Slovenia","Finland","Honduras","New Zealand","Serbia","Malta","Croatia","Central African Republic","Lebanon","Singapore","India","Thailand","Jamaica","Uruguay","Sudan","Cameroon","United Arab Emirates","Iceland","Slovakia","Venezuela","Liberia","Turkey","Estonia","Bosnia and Herzegovina","Saudi Arabia","Cuba","Martinique","Gibraltar","Latvia","Bulgaria","Ukraine","Cyprus","Congo","Lithuania","Qatar","South Africa","Andorra","Philippines","Morocco","Monaco","Benin","Aruba","Egypt","Curacao","Guyana","Russia","Bahamas","Bahrain","Greenland","Georgia","Vietnam","Moldova","Pakistan","Montenegro","Sri Lanka","Guadeloupe","Barbados","Bermuda","Guam","Mozambique","Iran","Jordan","Indonesia","New Caledonia","Saint Martin (French part)","San Marino"],"locationmode":"country names","locations":["United States","Brazil","Spain","France","Colombia","Mexico","Peru","United Kingdom","Germany","Canada","Chile","Netherlands","Argentina","Italy","Portugal","Nigeria","Belgium","Democratic Republic of Congo","Switzerland","Ecuador","Guatemala","Austria","Bolivia","Israel","Sweden","Ireland","Panama","Costa Rica","Poland","Denmark","Australia","Japan","Paraguay","Ghana","El Salvador","Norway","Greece","Hungary","China","Czechia","South Korea","Luxembourg","Dominican Republic","Romania","Slovenia","Finland","Honduras","New Zealand","Serbia","Malta","Croatia","Central African Republic","Lebanon","Singapore","India","Thailand","Jamaica","Uruguay","Sudan","Cameroon","United Arab Emirates","Iceland","Slovakia","Venezuela","Liberia","Turkey","Estonia","Bosnia and Herzegovina","Saudi Arabia","Cuba","Martinique","Gibraltar","Latvia","Bulgaria","Ukraine","Cyprus","Congo","Lithuania","Qatar","South Africa","Andorra","Philippines","Morocco","Monaco","Benin","Aruba","Egypt","Curacao","Guyana","Russia","Bahamas","Bahrain","Greenland","Georgia","Vietnam","Moldova","Pakistan","Montenegro","Sri Lanka","Guadeloupe","Barbados","Bermuda","Guam","Mozambique","Iran","Jordan","Indonesia","New Caledonia","Saint Martin (French part)","San Marino"],"name":"","z":{"dtype":"f8","bdata":"AAAAAIBy3UAAAAAAAFTFQAAAAAAAf71AAAAAAAAysEAAAAAAAPSvQAAAAAAAVK9AAAAAAACwrUAAAAAAADqtQAAAAAAA1qxAAAAAAAAwl0AAAAAAAISWQAAAAAAAwJNAAAAAAACkkUAAAAAAAOiNQAAAAAAAyI1AAAAAAAAYikAAAAAAAMiIQAAAAAAAYIFAAAAAAABAgUAAAAAAAKiAQAAAAAAAQHlAAAAAAACAdEAAAAAAAJBwQAAAAAAAYHBAAAAAAABAcEAAAAAAAKBsQAAAAAAAQGxAAAAAAACga0AAAAAAACBrQAAAAAAAgGhAAAAAAAAgYkAAAAAAAMBfQAAAAAAAQF9AAAAAAAAAX0AAAAAAAABaQAAAAAAAwFdAAAAAAAAAVkAAAAAAAABUQAAAAAAAwFFAAAAAAADAUUAAAAAAAABOQAAAAAAAgExAAAAAAAAASkAAAAAAAIBHQAAAAAAAgEdAAAAAAAAARUAAAAAAAABFQAAAAAAAgERAAAAAAAAAREAAAAAAAABBQAAAAAAAgEBAAAAAAAAAPEAAAAAAAAA7QAAAAAAAADlAAAAAAAAANkAAAAAAAAA1QAAAAAAAADVAAAAAAAAAM0AAAAAAAAAzQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAwQAAAAAAAACxAAAAAAAAAKEAAAAAAAAAoQAAAAAAAAChAAAAAAAAAJkAAAAAAAAAiQAAAAAAAACBAAAAAAAAAIEAAAAAAAAAcQAAAAAAAABhAAAAAAAAAGEAAAAAAAAAYQAAAAAAAABRAAAAAAAAAFEAAAAAAAAAUQAAAAAAAABRAAAAAAAAAFEAAAAAAAAAUQAAAAAAAABBAAAAAAAAAEEAAAAAAAAAIQAAAAAAAAAhAAAAAAAAACEAAAAAAAAAIQAAAAAAAAAhAAAAAAAAACEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAA8D8AAAAAAADwPwAAAAAAAPA\u002fAAAAAAAA8D8AAAAAAADwPwAAAAAAAPA\u002fAAAAAAAA8D8AAAAAAADwPwAAAAAAAPA\u002fAAAAAAAA8D8AAAAAAADwPw=="},"type":"choropleth"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"geo":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"center":{},"showframe":false,"showcoastlines":true},"coloraxis":{"colorbar":{"title":{"text":"total_cases"}},"colorscale":[[0.0,"rgb(255,245,240)"],[0.125,"rgb(254,224,210)"],[0.25,"rgb(252,187,161)"],[0.375,"rgb(252,146,114)"],[0.5,"rgb(251,106,74)"],[0.625,"rgb(239,59,44)"],[0.75,"rgb(203,24,29)"],[0.875,"rgb(165,15,21)"],[1.0,"rgb(103,0,13)"]]},"legend":{"tracegroupgap":0},"title":{"text":"R\u00e9partition mondiale des cas cumul\u00e9s de mpox par pays","x":0.5}},                        {"responsive": true}                    ).then(function(){
@@ -700,9 +735,9 @@ temporelle et géographique de l’épidémie. Elle fournit une base solide
 pour produire des indicateurs de suivi et approfondir l’analyse dans les
 étapes suivantes du projet.
 
-------------------------------------------------------------------------
+---
 
-------------------------------------------------------------------------
+---
 
 # Modélisation et Apprentissage
 
@@ -718,7 +753,7 @@ Le projet repose sur des données tabulaires organisées par pays et par
 date. Le pipeline est donc centré sur une approche de Machine Learning
 supervisé, avec une cible numérique : `daily_new_cases`.
 
-``` mermaid
+```mermaid
 graph TD
     A[Données Brutes Multi-Sources CSV/API] -->|Formatage & Alignement| B(data_clean.clean_dates)
     C[Données Externes Complémentaires] -->|Imputation & Interpolation| D(data_clean.impute_missing_values)
@@ -728,7 +763,7 @@ graph TD
     H[Flux Multimédias Réels Images/Signaux] -->|Prétraitement d'images/signaux| I[Réseau Convolutif CNN TensorFlow]
     G -->|Prédictions de la Problématique Métier| J[Livrables & Aide à la Décision]
     I -->|Détection de Motifs Complexes| J
-    
+
     style E fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
     style J fill:#f0fdf4,stroke:#16a34a,stroke-width:2px
     style G fill:#fef3c7,stroke:#d97706,stroke-width:2px
@@ -811,13 +846,13 @@ plusieurs zones géographiques.
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
-|----|----|----|----|----|----|----|
-| 0 | United States | 2022-06-03 | 19.0 | 0.0 | 19.0 | 0.0 |
-| 1 | United States | 2022-06-04 | 21.0 | 0.0 | 2.0 | 0.0 |
-| 2 | United States | 2022-06-05 | 25.0 | 0.0 | 4.0 | 0.0 |
-| 3 | United States | 2022-06-06 | 25.0 | 0.0 | 0.0 | 0.0 |
-| 4 | United States | 2022-06-07 | 25.0 | 0.0 | 0.0 | 0.0 |
+|     | country       | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths |
+| --- | ------------- | ---------- | ----------- | ------------ | --------------- | ---------------- |
+| 0   | United States | 2022-06-03 | 19.0        | 0.0          | 19.0            | 0.0              |
+| 1   | United States | 2022-06-04 | 21.0        | 0.0          | 2.0             | 0.0              |
+| 2   | United States | 2022-06-05 | 25.0        | 0.0          | 4.0             | 0.0              |
+| 3   | United States | 2022-06-06 | 25.0        | 0.0          | 0.0             | 0.0              |
+| 4   | United States | 2022-06-07 | 25.0        | 0.0          | 0.0             | 0.0              |
 
 </div>
 
@@ -847,13 +882,13 @@ mobiles.
     }
 </style>
 
-|  | country | date | total_cases | total_deaths | daily_new_cases | daily_new_deaths | year | month | dayofweek | daily_new_cases_lag1 | ... | rolling_mean_3 | rolling_max_3 | rolling_mean_7 | rolling_max_7 | rolling_mean_14 | rolling_max_14 | rolling_mean_21 | rolling_max_21 | diff_lag1_lag7 | diff_lag7_lag14 |
-|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| 0 | United States | 2022-06-24 | 173.0 | 0.0 | 31.0 | 0.0 | 2022 | 6 | 4 | 29.0 | ... | 9.666667 | 29.0 | 10.000000 | 29.0 | 7.500000 | 29.0 | 6.761905 | 29.0 | 17.0 | 9.0 |
-| 1 | United States | 2022-06-25 | 175.0 | 0.0 | 2.0 | 0.0 | 2022 | 6 | 5 | 31.0 | ... | 20.000000 | 31.0 | 12.714286 | 31.0 | 9.500000 | 31.0 | 7.333333 | 31.0 | 15.0 | 7.0 |
-| 2 | United States | 2022-06-26 | 199.0 | 0.0 | 24.0 | 0.0 | 2022 | 6 | 6 | 2.0 | ... | 20.666667 | 31.0 | 10.714286 | 31.0 | 9.000000 | 31.0 | 7.333333 | 31.0 | -11.0 | 13.0 |
-| 3 | United States | 2022-06-27 | 199.0 | 0.0 | 0.0 | 0.0 | 2022 | 6 | 0 | 24.0 | ... | 19.000000 | 31.0 | 12.285714 | 31.0 | 10.714286 | 31.0 | 8.285714 | 31.0 | 24.0 | -2.0 |
-| 4 | United States | 2022-06-28 | 201.0 | 0.0 | 2.0 | 0.0 | 2022 | 6 | 1 | 0.0 | ... | 8.666667 | 24.0 | 12.285714 | 31.0 | 10.571429 | 31.0 | 8.285714 | 31.0 | 0.0 | -14.0 |
+|     | country       | date       | total_cases | total_deaths | daily_new_cases | daily_new_deaths | year | month | dayofweek | daily_new_cases_lag1 | ... | rolling_mean_3 | rolling_max_3 | rolling_mean_7 | rolling_max_7 | rolling_mean_14 | rolling_max_14 | rolling_mean_21 | rolling_max_21 | diff_lag1_lag7 | diff_lag7_lag14 |
+| --- | ------------- | ---------- | ----------- | ------------ | --------------- | ---------------- | ---- | ----- | --------- | -------------------- | --- | -------------- | ------------- | -------------- | ------------- | --------------- | -------------- | --------------- | -------------- | -------------- | --------------- |
+| 0   | United States | 2022-06-24 | 173.0       | 0.0          | 31.0            | 0.0              | 2022 | 6     | 4         | 29.0                 | ... | 9.666667       | 29.0          | 10.000000      | 29.0          | 7.500000        | 29.0           | 6.761905        | 29.0           | 17.0           | 9.0             |
+| 1   | United States | 2022-06-25 | 175.0       | 0.0          | 2.0             | 0.0              | 2022 | 6     | 5         | 31.0                 | ... | 20.000000      | 31.0          | 12.714286      | 31.0          | 9.500000        | 31.0           | 7.333333        | 31.0           | 15.0           | 7.0             |
+| 2   | United States | 2022-06-26 | 199.0       | 0.0          | 24.0            | 0.0              | 2022 | 6     | 6         | 2.0                  | ... | 20.666667      | 31.0          | 10.714286      | 31.0          | 9.000000        | 31.0           | 7.333333        | 31.0           | -11.0          | 13.0            |
+| 3   | United States | 2022-06-27 | 199.0       | 0.0          | 0.0             | 0.0              | 2022 | 6     | 0         | 24.0                 | ... | 19.000000      | 31.0          | 12.285714      | 31.0          | 10.714286       | 31.0           | 8.285714        | 31.0           | 24.0           | -2.0            |
+| 4   | United States | 2022-06-28 | 201.0       | 0.0          | 2.0             | 0.0              | 2022 | 6     | 1         | 0.0                  | ... | 8.666667       | 24.0          | 12.285714      | 31.0          | 10.571429       | 31.0           | 8.285714        | 31.0           | 0.0            | -14.0           |
 
 <p>5 rows × 29 columns</p>
 </div>
@@ -907,7 +942,7 @@ le nombre de cas est une variable de comptage.
 </style>
 
 |     | Modèle            | MAE      | RMSE     | R²        |
-|-----|-------------------|----------|----------|-----------|
+| --- | ----------------- | -------- | -------- | --------- |
 | 1   | Random Forest     | 1.984375 | 5.789268 | 0.101735  |
 | 2   | Extra Trees       | 2.281250 | 5.939802 | 0.054414  |
 | 3   | Gradient Boosting | 2.328125 | 6.135196 | -0.008820 |
@@ -977,7 +1012,7 @@ permet de rester aligné avec la nature réelle des données et d’éviter
 d’appliquer un modèle complexe qui ne serait pas justifié par le format
 du dataset.
 
-------------------------------------------------------------------------
+---
 
 # Évaluation Métrique et Validation
 
@@ -1013,10 +1048,10 @@ se trompe en moyenne ; RMSE : racine de l’erreur quadratique moyenne.
 Elle pénalise davantage les grosses erreurs ; R² : coefficient de
 détermination. Il mesure la part de variance expliquée par le modèle.
 
-| Modèle | Métrique 1 (MAE / Précision) | Métrique 2 (RMSE / F1-Score) | Métrique 3 (R² / Score (%)) |
-|----|----|----|----|
-| Baseline | 3.781250 | 9.022541 | -1.181799 |
-| **Random Forest** | **1.984375** | **5.789268** | **0.101735** |
+| Modèle            | Métrique 1 (MAE / Précision) | Métrique 2 (RMSE / F1-Score) | Métrique 3 (R² / Score (%)) |
+| ----------------- | ---------------------------- | ---------------------------- | --------------------------- |
+| Baseline          | 3.781250                     | 9.022541                     | -1.181799                   |
+| **Random Forest** | **1.984375**                 | **5.789268**                 | **0.101735**                |
 
 La comparaison avec la baseline naïve permet d’évaluer si les modèles de
 Machine Learning apportent une réelle valeur ajoutée. Si le modèle
@@ -1041,7 +1076,7 @@ exploratoire de prédiction. Il permet de tester la faisabilité d’une
 prévision à partir des données disponibles, mais il ne doit pas être
 considéré comme un outil opérationnel de prévision sanitaire.
 
-------------------------------------------------------------------------
+---
 
 # Data Storytelling et Communication
 
@@ -1106,7 +1141,7 @@ lieu d’un seul split train/test ;
 Ce document dynamique a été compilé en Quarto ([Team
 2024](#ref-quarto2024)).
 
-------------------------------------------------------------------------
+---
 
 # Bibliographie
 
@@ -1114,8 +1149,8 @@ Ce document dynamique a été compilé en Quarto ([Team
 
 <div id="ref-pandas2020" class="csl-entry">
 
-McKinney, Wes. 2020. *Python for Data Analysis: Data Wrangling with
-Pandas, NumPy, and IPython*. O’Reilly Media.
+McKinney, Wes. 2020. _Python for Data Analysis: Data Wrangling with
+Pandas, NumPy, and IPython_. O’Reilly Media.
 
 </div>
 
@@ -1128,3 +1163,65 @@ Collaborative Scientific and Technical Publishing.”
 </div>
 
 </div>
+## 📂 Structure du Projet
+
+```text
+├── .github/workflows/      # Pipelines d'intégration continue
+├── build/                  # Fichiers de compilation générés (exclus de Git)
+│   ├── src/                # Scripts Python extraits des notebooks
+│   ├── logs/               # Rapports d'exécution de chaque étape
+│   ├── notebooks/          # Fichiers Quarto Markdown intermédiaires
+│   └── report/             # PDF, HTML et Markdown compilés finaux
+├── data/                   # Dossier de stockage des données
+│   ├── raw/                # Données brutes sources
+│   └── processed/          # Données nettoyées après Wrangling
+├── notebooks/              # Travaux pratiques (fichiers .ipynb d'origine)
+│   ├── 01_acquisition.ipynb
+│   ├── 02_wrangling.ipynb
+│   ├── ...
+├── report/                 # Modèles et configurations des rapports
+│   ├── rapport.qmd         # Fichier maître du rapport
+│   └── slides.qmd          # Support de soutenance RevealJS
+└── tools/                  # Utilitaires de compilation et de preprocessing
+```
+
+---
+
+## 🛠️ Exécuter et compiler localement
+
+Toutes les tâches du projet sont orchestrées simplement via le gestionnaire de tâches **Go-Task** (`task`).
+
+### 1. Prérequis
+
+Assurez-vous d'avoir installé :
+
+- [Python 3.12](https://www.python.org/)
+- [Quarto CLI](https://quarto.org/docs/get-started/)
+- [Go-Task](https://taskfile.dev/installation/)
+
+Installez ensuite les dépendances du projet :
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Commandes de compilation rapides
+
+Depuis la racine du projet, lancez :
+
+- **Compiler l'intégralité du pipeline et des rapports** (génère tout dans `build/`) :
+  ```bash
+  task render
+  ```
+- **Prévisualiser dynamiquement le rapport dans le navigateur** (rechargement automatique lors de la saisie) :
+  ```bash
+  task preview
+  ```
+- **Compiler uniquement le guide d'installation** :
+  ```bash
+  task install-guide
+  ```
+- **Nettoyer tous les fichiers temporaires et compilations locales** :
+  ```bash
+  task clean
+  ```

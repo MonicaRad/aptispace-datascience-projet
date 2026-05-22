@@ -1,26 +1,26 @@
 # Guide d’Installation de l’Environnement de Data Science
+
 Équipe Pédagogique - Aptispace
 2026-05-19
 
+- [Guide d’Installation de l’Environnement de Data Science](#guide-dinstallation-de-lenvironnement-de-data-science)
 - [Introduction](#introduction)
 - [Aperçu de la Boîte à Outils](#aperçu-de-la-boîte-à-outils)
-- [🚀 Installation Automatisée
-  (Recommandé)](#rocket-installation-automatisée-recommandé)
-- [🛠️ Configuration Manuelle
-  (Alternative)](#hammer_and_wrench-configuration-manuelle-alternative)
+- [🚀 Installation Automatisée (Recommandé)](#-installation-automatisée-recommandé)
+  - [Windows (PowerShell)](#windows-powershell)
+  - [macOS (Homebrew)](#macos-homebrew)
+  - [Linux (Debian/Ubuntu)](#linux-debianubuntu)
+- [🛠️ Configuration Manuelle (Alternative)](#️-configuration-manuelle-alternative)
   - [1. Python 3 (3.12 ou 3.14)](#1-python-3-312-ou-314)
   - [2. Quarto CLI](#2-quarto-cli)
   - [3. Typst (PDF Engine)](#3-typst-pdf-engine)
   - [4. Go-Task (Taskfile)](#4-go-task-taskfile)
-- [🏃 Initialisation du Projet](#running-initialisation-du-projet)
-  - [1. Créer l’environnement virtuel
-    Python](#1-créer-lenvironnement-virtuel-python)
-  - [2. Activer l’environnement
-    virtuel](#2-activer-lenvironnement-virtuel)
+- [🏃 Initialisation du Projet](#-initialisation-du-projet)
+  - [1. Créer l’environnement virtuel Python](#1-créer-lenvironnement-virtuel-python)
+  - [2. Activer l’environnement virtuel](#2-activer-lenvironnement-virtuel)
   - [3. Installer les dépendances](#3-installer-les-dépendances)
-  - [4. Configurer le noyau Jupyter
-    (Kernel)](#4-configurer-le-noyau-jupyter-kernel)
-- [⚙️ Utilisation du Taskfile](#gear-utilisation-du-taskfile)
+  - [4. Configurer le noyau Jupyter (Kernel)](#4-configurer-le-noyau-jupyter-kernel)
+- [⚙️ Utilisation du Taskfile](#️-utilisation-du-taskfile)
 
 # Introduction
 
@@ -29,21 +29,21 @@ d’outils nécessaire pour exécuter le pipeline de Data Science, éditer
 vos notebooks et générer vos livrables de communication dynamique
 (rapports PDF et HTML).
 
-------------------------------------------------------------------------
+---
 
 # Aperçu de la Boîte à Outils
 
 Voici la description des outils requis pour votre projet :
 
-| Outil | Rôle dans le Projet |
-|----|----|
-| **Python (3.12+)** | Moteur de calcul, manipulation de données (`pandas`), Machine Learning (`scikit-learn`) et Deep Learning (`tensorflow`). |
-| **Jupyter Notebooks** | Carnets d’exploration de recherche et prototypage rapide. |
-| **Quarto CLI** | Système d’édition scientifique permettant de fusionner vos codes, analyses et textes dans un rapport unique. |
-| **Typst** | Moteur de rendu PDF ultra-moderne et extrêmement rapide utilisé par Quarto pour générer vos rapports finaux. |
+| Outil                  | Rôle dans le Projet                                                                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Python (3.12+)**     | Moteur de calcul, manipulation de données (`pandas`), Machine Learning (`scikit-learn`) et Deep Learning (`tensorflow`).                 |
+| **Jupyter Notebooks**  | Carnets d’exploration de recherche et prototypage rapide.                                                                                |
+| **Quarto CLI**         | Système d’édition scientifique permettant de fusionner vos codes, analyses et textes dans un rapport unique.                             |
+| **Typst**              | Moteur de rendu PDF ultra-moderne et extrêmement rapide utilisé par Quarto pour générer vos rapports finaux.                             |
 | **Go-Task (Taskfile)** | Moteur d’automatisation (alternative moderne à Make) permettant de compiler vos notebooks et générer vos rapports en une seule commande. |
 
-------------------------------------------------------------------------
+---
 
 # 🚀 Installation Automatisée (Recommandé)
 
@@ -57,41 +57,40 @@ sont à votre disposition dans le dossier `tools/` de votre projet.
 Ouvrez un terminal PowerShell **en mode Administrateur** et exécutez la
 commande suivante depuis la racine du projet :
 
-``` powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
-.\tools\install_windows.ps1
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force .\tools\install_windows.ps1
 ```
 
-*Le script se chargera d’installer Chocolatey, Python 3.12+, Quarto,
-Typst et Go-Task automatiquement.*
+_Le script se chargera d’installer Chocolatey, Python 3.12+, Quarto,
+Typst et Go-Task automatiquement._
 
 ## macOS (Homebrew)
 
 Ouvrez votre terminal et lancez le script d’installation :
 
-``` bash
+```bash
 chmod +x ./tools/install_macos.sh
 ./tools/install_macos.sh
 ```
 
-*Ce script utilise Homebrew pour installer toute la suite d’outils.*
+_Ce script utilise Homebrew pour installer toute la suite d’outils._
 
 ## Linux (Debian/Ubuntu)
 
 Ouvrez votre terminal et lancez le script d’installation avec vos
 privilèges sudo :
 
-``` bash
+```bash
 chmod +x ./tools/install_linux.sh
 ./tools/install_linux.sh
 ```
 
-*Ce script utilise `apt` et récupère les binaires officiels pour
-installer Typst, Quarto et Go-Task.*
+_Ce script utilise `apt` et récupère les binaires officiels pour
+installer Typst, Quarto et Go-Task._
 
 </div>
 
-------------------------------------------------------------------------
+---
 
 # 🛠️ Configuration Manuelle (Alternative)
 
@@ -128,7 +127,7 @@ instructions ci-dessous :
 - **Linux :** Installez en une commande :
   `sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin`.
 
-------------------------------------------------------------------------
+---
 
 # 🏃 Initialisation du Projet
 
@@ -137,7 +136,7 @@ répertoire racine et suivez les étapes d’initialisation suivantes :
 
 ## 1. Créer l’environnement virtuel Python
 
-``` bash
+```bash
 python3 -m venv venv
 ```
 
@@ -148,7 +147,7 @@ python3 -m venv venv
 
 ## 3. Installer les dépendances
 
-``` bash
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
@@ -157,11 +156,11 @@ pip install -r requirements.txt
 
 Pour lier votre environnement virtuel à vos notebooks Jupyter :
 
-``` bash
+```bash
 python -m ipykernel install --user --name=venv-projet --display-name="Python (Projet Data Science)"
 ```
 
-------------------------------------------------------------------------
+---
 
 # ⚙️ Utilisation du Taskfile
 
@@ -170,21 +169,21 @@ lancer les commandes suivantes avec `task` depuis la racine du projet :
 
 - **Compiler les notebooks uniquement :**
 
-  ``` bash
+  ```bash
   task compile
   ```
 
-  *(Extrait le code en scripts `.py`, génère les `.log` d’exécution et
-  prépare les `.qmd` pour Quarto)*
+  _(Extrait le code en scripts `.py`, génère les `.log` d’exécution et
+  prépare les `.qmd` pour Quarto)_
 
 - **Générer le rapport sous tous les formats (HTML, PDF, Markdown) :**
 
-  ``` bash
+  ```bash
   task render
   ```
 
 - **Démarrer le serveur de prévisualisation Quarto en temps réel :**
 
-  ``` bash
+  ```bash
   task preview
   ```

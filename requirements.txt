@@ -16,3 +16,6 @@ plotly>=5.15.0
 ipykernel
 jupyter
 quarto
+
+# Pour importer les datasets
+kagglehub

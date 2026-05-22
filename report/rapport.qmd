@@ -19,7 +19,7 @@ format:
     toc: true
     number-sections: true
   gfm:
-    output-file: "README.md"
+    output-file: "rapport.md"
     toc: true
     toc-depth: 2
 execute:
