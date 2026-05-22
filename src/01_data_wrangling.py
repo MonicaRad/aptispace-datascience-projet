@@ -12,7 +12,6 @@ import numpy as np
 
 # Ajout du dossier parent au chemin de recherche de modules pour importer 'src'
 sys.path.append(os.path.abspath('..'))
-from src import data_clean as dc
 
 print("Libraries importées avec succès ! Prêt à démarrer le Wrangling.")
 

@@ -1,98 +1,209 @@
 ---
 title: "🎓 Soutenance de Projet Data Science"
-subtitle: "Présentation des résultats - Sujet Libre"
-author: "Groupe d'étudiants [Insérer Noms]"
+subtitle: "Analyse et prédiction de la propagation du Mpox"
+author:
+  - "Monica RADIFERA RASAMOELIJAONA"
+  - "Hocine AKLI"
 date: today
 format:
   revealjs:
     theme: solarized
-    transition: slide
     slide-number: true
+    transition: slide
     preview-links: auto
     chalkboard: true
-    code-fold: show
+    incremental: true
+execute:
+  echo: false
+  warning: false
+  message: false
+bibliography: references.bib
+link-citations: true
 ---
 
-# 🎯 Chapitres 1 & 2 : Acquisition & Wrangling
+# Introduction
 
-## Sources de données & Nettoyage
+## Contexte métier
 
-### Objectifs d'Acquisition
+- Le projet analyse les données du **Mpox** pour mieux comprendre la propagation du virus.
+- L’objectif est de suivre l’évolution des cas, comparer les pays et repérer les zones à risque.
+- Le sujet relève de la santé publique et de l’épidémiologie.
 
-- *[À compléter par les étudiants]* : Décrivez vos sources brutes (fichiers locaux, APIs, web scraping).
+## Problématique
 
-### Algorithmes de Nettoyage appliqués
+- Comment prédire et anticiper la propagation du Mpox à partir de données réelles ?
+- Quelles tendances temporelles observe-t-on selon les pays ?
+- Quels indicateurs sont les plus utiles pour la surveillance ?
 
-- Traitement des valeurs manquantes (imputation/interpolation).
-- Gestion des anomalies physiques (outliers).
-- Standardisation des dates et encodage.
+## Objectifs
 
-> [!TIP]
-> Justifiez en quoi ces étapes garantissent la robustesse de vos modèles futurs.
+- Préparer et nettoyer les données.
+- Explorer les tendances du dataset.
+- Construire un modèle prédictif sur les nouveaux cas quotidiens.
+- Produire des recommandations utiles à la décision.
 
----
+# Acquisition et Wrangling
 
-# 📊 Chapitres 3 & 4 : EDA & Visualisation
+## Données utilisées
 
-## Exploration Visuelle & Insights Majeurs
+- Dataset tabulaire épidémiologique quotidien par pays.
+- Variables principales :
+  - `date`
+  - `location`
+  - `new_cases`
+  - `new_deaths`
+  - `total_cases`
+  - `total_deaths`
 
-### Statistiques Descriptives
+## Audit qualité
 
-- Aperçu des indicateurs clés et structures.
+- Vérification de la structure des colonnes.
+- Analyse des valeurs manquantes.
+- Contrôle des doublons.
+- Suppression des colonnes trop incomplètes.
 
-### Feature Engineering
+## Nettoyage appliqué
 
-- Extraction des variables cycliques et dérivées (ex: `hour`, `dayofweek`).
+- Standardisation du format des dates.
+- Conservation des données au niveau **pays** uniquement.
+- Suppression des colonnes redondantes.
+- Traitement des valeurs manquantes, notamment pour `total_deaths`.
 
-::: {.fragment}
-### Insights Visuels clés
+## Résultats du wrangling
 
-- **Graphique interactif / statique** : Présentez ici le graphique le plus marquant (ex: corrélations ou tendances fortes).
-:::
+- Les colonnes trop incomplètes ont été supprimées.
+- Les dates ont été homogénéisées.
+- Les données ont été filtrées au niveau pays.
+- Les valeurs manquantes critiques ont été traitées.
 
----
+# Analyse exploratoire
 
-# 🧠 Chapitre 5 : Modélisation
+## Statistiques descriptives
 
-## Stratégie d'Apprentissage & Architectures
+- Le dataset nettoyé permet de suivre l’évolution des cas et décès dans le temps.
+- Les variables cumulées montrent la progression globale de l’épidémie.
+- Les variables journalières mettent en évidence les fluctuations quotidiennes.
 
-::: {.panel-tabset}
-### Machine Learning Tabulaire
+## Feature engineering
 
-- Algorithme choisi : `RandomForestRegressor`, `XGBoost`, etc.
-- Justification du choix par rapport au problème métier.
+- Conservation des variables principales.
+- Recalcul ou complétion de certaines valeurs manquantes.
+- Enrichissement de `date` avec :
+  - année,
+  - mois,
+  - année-mois,
+  - jour de la semaine.
 
-### Deep Learning (Vision / Signaux)
+## Insights visuels
 
-- Réseau de neurones convolutif (**CNN**) sous **TensorFlow**.
-- Architecture des couches : *Conv2D*, *MaxPooling2D*, *Flatten*, *Dense*, *Dropout*.
-:::
+- Comparaison des pays les plus touchés.
+- Analyse des tendances temporelles.
+- Mise en évidence des pics et variations journalières.
 
----
+## Résultats EDA
 
-# 🧪 Chapitre 6 : Évaluation
+- Les cas cumulés augmentent fortement dans certains pays.
+- Les nouveaux cas journaliers montrent une forte variabilité.
+- Les moyennes mobiles rendent les tendances plus lisibles.
+- Certains pays concentrent l’essentiel des cas observés.
+# Modélisation
 
-## Métriques & Robustesse des Prédictions
+## Objectif prédictif
 
-| Modèle | MAE | RMSE | $R^2$ (%) |
-| :--- | :---: | :---: | :---: |
-| Baseline (Ex: Naïve) | *[À compléter]* | *[À compléter]* | *[À compléter]* |
-| **Forêt Aléatoire (RF)** | **[À compléter]** | **[À compléter]** | **[À compléter]** |
-| **Réseau Convolutif (CNN)**| **[À compléter]** | **[À compléter]** | **[À compléter]** |
+- La variable cible retenue est `daily_new_cases`.
+- Ce choix est plus pertinent que `total_cases`, qui augmente mécaniquement.
+- L’objectif est de prédire la dynamique réelle des nouveaux cas.
 
-> [!IMPORTANT]
-> Expliquez votre protocole de validation (ex : split chronologique ou Cross-Validation) pour prévenir tout risque d'overfitting.
+## Méthode
 
----
+- Approche de régression supervisée.
+- Modélisation sur un seul pays très touché pour garder une série cohérente.
+- Variables explicatives :
+  - retards à 1, 2, 3, 7, 14 et 21 jours,
+  - moyennes mobiles,
+  - maximums mobiles.
 
-# 📢 Chapitre 7 : Communication
+## Modèles comparés
 
-## Storytelling & Recommandations Stratégiques
+- Baseline naïve
+- Random Forest
+- Extra Trees
+- Gradient Boosting
 
-### Recommandations Métier clés
+## Pipeline
 
-- *[À compléter]* : Traduisez vos métriques de performance en préconisations opérationnelles ou gains métier directs.
+```{mermaid}
+graph TD
+    A[Données brutes] --> B[Nettoyage]
+    B --> C[Feature Engineering]
+    C --> D[Split chronologique]
+    D --> E[Modèles ML]
+    E --> F[Évaluation]
+    F --> G[Recommandations]
+```
+## Résultats de modélisation
 
-### Limites & Perspectives
+- Une baseline naïve a servi de point de comparaison.
+- Plusieurs modèles de régression ont été testés.
+- Random Forest est le modèle retenu.
+- Il améliore la MAE par rapport à la baseline.
 
-- Biais des données, limites de l'architecture, et voies d'amélioration futures.
+# Évaluation
+
+## Validation
+
+- Découpage chronologique train/test.
+- Pas de split aléatoire pour éviter la fuite de données.
+- Les variables de retard sont calculées uniquement à partir du passé.
+
+## Métriques
+
+- **MAE** : erreur absolue moyenne.
+- **RMSE** : pénalise davantage les grosses erreurs.
+- **R²** : part de variance expliquée par le modèle.
+
+## Résultats
+
+| Modèle | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Baseline | 3.781250 | 9.022541 | -1.181799 |
+| Random Forest | 1.984375 | 5.789268 | 0.101735 |
+
+## Interprétation
+
+- Le modèle Random Forest améliore la baseline.
+- Les prédictions restent cohérentes en ordre de grandeur.
+- Les pics brutaux restent difficiles à anticiper.
+
+# Communication
+
+## Recommandations métier
+
+- Mettre en place un suivi différencié par pays.
+- Compléter l’analyse journalière par des moyennes mobiles.
+- Utiliser la prédiction comme outil d’aide à la surveillance.
+
+## Limites
+
+- Peu de variables externes disponibles.
+- Données quotidiennes irrégulières.
+- Modélisation limitée à un seul pays.
+- Le CNN n’a pas été retenu, car le dataset est tabulaire.
+
+## Perspectives
+
+- Ajouter des variables externes : population, tests, vaccination.
+- Tester des modèles plus spécialisés en séries temporelles.
+- Mettre en place une validation temporelle glissante.
+
+# Conclusion
+
+## Bilan
+
+- Le projet montre qu’il est possible d’extraire des tendances utiles à partir des données Mpox.
+- La préparation des données a permis d’obtenir une base exploitable.
+- La modélisation fournit une première approche prédictive intéressante.
+
+## Référence
+
+Document préparé avec Quarto [@quarto2024].
