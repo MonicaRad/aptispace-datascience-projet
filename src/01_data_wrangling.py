@@ -1,5 +1,5 @@
 import os, sys
-sys.path.append('C:\Users\aklih\rendu-data\aptispace-datascience-projet')
+sys.path.append('C:\Users\Monica\aptispace-datascience-projet')
 
 # Installation automatique des dépendances requises dans le noyau Jupyter actuel
 # %pip install -r ../requirements.txt
@@ -12,7 +12,6 @@ import numpy as np
 
 # Ajout du dossier parent au chemin de recherche de modules pour importer 'src'
 sys.path.append(os.path.abspath('..'))
-from src import data_clean as dc
 
 print("Libraries importées avec succès ! Prêt à démarrer le Wrangling.")
 

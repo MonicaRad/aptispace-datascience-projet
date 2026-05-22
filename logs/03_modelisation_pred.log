@@ -1,7 +1,7 @@
 === STDOUT ===
 
 === STDERR ===
-  File "C:\Users\aklih\rendu-data\aptispace-datascience-projet\src\03_modelisation_pred.py", line 2
-    sys.path.append('C:\Users\aklih\rendu-data\aptispace-datascience-projet')
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Monica\aptispace-datascience-projet\src\03_modelisation_pred.py", line 2
+    sys.path.append('C:\Users\Monica\aptispace-datascience-projet')
+                                                                  ^
 SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape

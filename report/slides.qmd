@@ -1,0 +1,209 @@
+---
+title: "🎓 Soutenance de Projet Data Science"
+subtitle: "Analyse et prédiction de la propagation du Mpox"
+author:
+  - "Monica RADIFERA RASAMOELIJAONA"
+  - "Hocine AKLI"
+date: today
+format:
+  revealjs:
+    theme: solarized
+    slide-number: true
+    transition: slide
+    preview-links: auto
+    chalkboard: true
+    incremental: true
+execute:
+  echo: false
+  warning: false
+  message: false
+bibliography: references.bib
+link-citations: true
+---
+
+# Introduction
+
+## Contexte métier
+
+- Le projet analyse les données du **Mpox** pour mieux comprendre la propagation du virus.
+- L’objectif est de suivre l’évolution des cas, comparer les pays et repérer les zones à risque.
+- Le sujet relève de la santé publique et de l’épidémiologie.
+
+## Problématique
+
+- Comment prédire et anticiper la propagation du Mpox à partir de données réelles ?
+- Quelles tendances temporelles observe-t-on selon les pays ?
+- Quels indicateurs sont les plus utiles pour la surveillance ?
+
+## Objectifs
+
+- Préparer et nettoyer les données.
+- Explorer les tendances du dataset.
+- Construire un modèle prédictif sur les nouveaux cas quotidiens.
+- Produire des recommandations utiles à la décision.
+
+# Acquisition et Wrangling
+
+## Données utilisées
+
+- Dataset tabulaire épidémiologique quotidien par pays.
+- Variables principales :
+  - `date`
+  - `location`
+  - `new_cases`
+  - `new_deaths`
+  - `total_cases`
+  - `total_deaths`
+
+## Audit qualité
+
+- Vérification de la structure des colonnes.
+- Analyse des valeurs manquantes.
+- Contrôle des doublons.
+- Suppression des colonnes trop incomplètes.
+
+## Nettoyage appliqué
+
+- Standardisation du format des dates.
+- Conservation des données au niveau **pays** uniquement.
+- Suppression des colonnes redondantes.
+- Traitement des valeurs manquantes, notamment pour `total_deaths`.
+
+## Résultats du wrangling
+
+- Les colonnes trop incomplètes ont été supprimées.
+- Les dates ont été homogénéisées.
+- Les données ont été filtrées au niveau pays.
+- Les valeurs manquantes critiques ont été traitées.
+
+# Analyse exploratoire
+
+## Statistiques descriptives
+
+- Le dataset nettoyé permet de suivre l’évolution des cas et décès dans le temps.
+- Les variables cumulées montrent la progression globale de l’épidémie.
+- Les variables journalières mettent en évidence les fluctuations quotidiennes.
+
+## Feature engineering
+
+- Conservation des variables principales.
+- Recalcul ou complétion de certaines valeurs manquantes.
+- Enrichissement de `date` avec :
+  - année,
+  - mois,
+  - année-mois,
+  - jour de la semaine.
+
+## Insights visuels
+
+- Comparaison des pays les plus touchés.
+- Analyse des tendances temporelles.
+- Mise en évidence des pics et variations journalières.
+
+## Résultats EDA
+
+- Les cas cumulés augmentent fortement dans certains pays.
+- Les nouveaux cas journaliers montrent une forte variabilité.
+- Les moyennes mobiles rendent les tendances plus lisibles.
+- Certains pays concentrent l’essentiel des cas observés.
+# Modélisation
+
+## Objectif prédictif
+
+- La variable cible retenue est `daily_new_cases`.
+- Ce choix est plus pertinent que `total_cases`, qui augmente mécaniquement.
+- L’objectif est de prédire la dynamique réelle des nouveaux cas.
+
+## Méthode
+
+- Approche de régression supervisée.
+- Modélisation sur un seul pays très touché pour garder une série cohérente.
+- Variables explicatives :
+  - retards à 1, 2, 3, 7, 14 et 21 jours,
+  - moyennes mobiles,
+  - maximums mobiles.
+
+## Modèles comparés
+
+- Baseline naïve
+- Random Forest
+- Extra Trees
+- Gradient Boosting
+
+## Pipeline
+
+```{mermaid}
+graph TD
+    A[Données brutes] --> B[Nettoyage]
+    B --> C[Feature Engineering]
+    C --> D[Split chronologique]
+    D --> E[Modèles ML]
+    E --> F[Évaluation]
+    F --> G[Recommandations]
+```
+## Résultats de modélisation
+
+- Une baseline naïve a servi de point de comparaison.
+- Plusieurs modèles de régression ont été testés.
+- Random Forest est le modèle retenu.
+- Il améliore la MAE par rapport à la baseline.
+
+# Évaluation
+
+## Validation
+
+- Découpage chronologique train/test.
+- Pas de split aléatoire pour éviter la fuite de données.
+- Les variables de retard sont calculées uniquement à partir du passé.
+
+## Métriques
+
+- **MAE** : erreur absolue moyenne.
+- **RMSE** : pénalise davantage les grosses erreurs.
+- **R²** : part de variance expliquée par le modèle.
+
+## Résultats
+
+| Modèle | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Baseline | 3.781250 | 9.022541 | -1.181799 |
+| Random Forest | 1.984375 | 5.789268 | 0.101735 |
+
+## Interprétation
+
+- Le modèle Random Forest améliore la baseline.
+- Les prédictions restent cohérentes en ordre de grandeur.
+- Les pics brutaux restent difficiles à anticiper.
+
+# Communication
+
+## Recommandations métier
+
+- Mettre en place un suivi différencié par pays.
+- Compléter l’analyse journalière par des moyennes mobiles.
+- Utiliser la prédiction comme outil d’aide à la surveillance.
+
+## Limites
+
+- Peu de variables externes disponibles.
+- Données quotidiennes irrégulières.
+- Modélisation limitée à un seul pays.
+- Le CNN n’a pas été retenu, car le dataset est tabulaire.
+
+## Perspectives
+
+- Ajouter des variables externes : population, tests, vaccination.
+- Tester des modèles plus spécialisés en séries temporelles.
+- Mettre en place une validation temporelle glissante.
+
+# Conclusion
+
+## Bilan
+
+- Le projet montre qu’il est possible d’extraire des tendances utiles à partir des données Mpox.
+- La préparation des données a permis d’obtenir une base exploitable.
+- La modélisation fournit une première approche prédictive intéressante.
+
+## Référence
+
+Document préparé avec Quarto [@quarto2024].

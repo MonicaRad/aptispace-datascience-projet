@@ -1,5 +1,5 @@
 import os, sys
-sys.path.append('C:\Users\aklih\rendu-data\aptispace-datascience-projet')
+sys.path.append('C:\Users\Monica\aptispace-datascience-projet')
 
 # Installation automatique des dépendances requises dans le noyau Jupyter actuel
 # %pip install -r ../requirements.txt
@@ -13,11 +13,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 sys.path.append(os.path.abspath('..'))
-from src import data_clean as dc
-from src import utils_viz as uv
 
 # Activation de la charte graphique personnalisée du projet
-uv.set_custom_style(theme='light')
 # %matplotlib inline
 
 

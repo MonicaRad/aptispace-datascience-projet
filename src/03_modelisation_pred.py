@@ -1,5 +1,5 @@
 import os, sys
-sys.path.append('C:\Users\aklih\rendu-data\aptispace-datascience-projet')
+sys.path.append('C:\Users\Monica\aptispace-datascience-projet')
 
 # Installation automatique des dépendances requises dans le noyau Jupyter actuel
 # %pip install -r ../requirements.txt
@@ -17,7 +17,6 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 sys.path.append(os.path.abspath('..'))
 
-from src import data_clean as dc
 from src import utils_viz as uv
 
 uv.set_custom_style()

@@ -52,7 +52,14 @@ df_feat.head()
 
 #### A. Profils d'évolution et tendances
 
-Appliquez la fonction `plot_generic_trends` de votre module `src.utils_viz` pour tracer l'évolution de la valeur par rapport au temps.
+
+
+Cette figure montre l’évolution du nombre total de cas dans cinq pays au cours du temps. On observe d’abord une forte montée des cas à partir de l’été 2022, avec des rythmes différents selon les pays, puis une stabilisation progressive vers le début de l’année 2023.
+
+Un premier constat est que les États-Unis présentent le niveau de cas le plus élevé sur toute la période, avec une croissance rapide puis un plateau autour de 30 000 cas. Le Brésil arrive ensuite avec une progression plus lente mais continue, tandis que l’Espagne atteint également un niveau important avant de se stabiliser. La France et la Colombie affichent des volumes plus faibles, avec une montée plus tardive et une stabilisation autour de 4 000 cas.
+
+Cette figure permet donc de voir que la propagation du Mpox n’a pas été uniforme selon les pays. Elle met en évidence des dynamiques très différentes, ce qui justifie une analyse par pays plutôt qu’une lecture globale unique.
+
 
 ```{python}
 top_5_countries = (
